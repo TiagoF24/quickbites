@@ -88,7 +88,9 @@
                                 <li><a href="#">🍭 Receitas para Crianças</a></li>
                             </ul>
                         </li>
-                        <li><a href="/register">Entrar</a></li>
+                        <li><a href="/login">Entrar</a></li>
+                        <li><a href="/register">Registrar</a></li>
+
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
