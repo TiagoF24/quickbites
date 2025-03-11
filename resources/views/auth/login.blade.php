@@ -32,6 +32,15 @@
             </label>
         </div>
 
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <a class="text-sm underline rounded-md text-amber-500 hover:text-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                href="/register">
+                    {{ __('Não tem uma conta?') }}
+                </a>
+            </label>
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="text-sm underline rounded-md text-amber-500 hover:text-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
