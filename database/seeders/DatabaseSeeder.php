@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categorias;
+use App\Models\Receita;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +18,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Quick Bites Test',
+            'email' => 'test@quickbites.pt',
         ]);
+
+        Receita::factory(2)->create();
+
+        Categorias::factory(5)->create();
+
     }
 }
