@@ -45,6 +45,7 @@
   ======================================================== -->
 </head>
 
+
 <body class="index-page">
 
     <header id="header" class="header fixed-top">
@@ -95,15 +96,35 @@
                         @endguest
 
                         @auth
-                        <li><a href="/criar">Criar</a></li>
-                         <!-- Settings Dropdown -->
+                        <style>
+                            .btnCriar {
+                              background-color: #ff6b00 !important;
+                              color: white !important;
+                              padding: 8px 16px !important;
+                              border-radius: 4px !important;
+                              display: inline-flex !important;
+                              align-items: center !important;
+                              gap: 6px !important;
+                              text-decoration: none;
+                            }
+
+                            .btnCriar:hover {
+                              background-color: #e69600 !important; /* Cor mais escura ao passar o mouse */
+                            }
+                          </style>
+                        <li>
+                            <a href="/criar" class="btnCriar">
+                                <span style="font-size: 24px;">+</span> Criar
+                            </a>
+                          </li>
+
+                        <!-- Settings Dropdown -->
                         <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
                                 <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-
                                     <x-responsive-nav-link :href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">
@@ -151,7 +172,6 @@
                     <div>
                         <h4>Contacto</h4>
                         <p>
-                            <strong>Telemóvel:</strong> <span>+351 978 765 234</span><br>
                             <strong>Email:</strong> <span>contact@quickbites.pt</span><br>
                         </p>
                     </div>
@@ -160,7 +180,7 @@
                 <div class="col-lg-3 col-md-6 d-flex">
                     <i class="bi bi-clock icon"></i>
                     <div>
-                        <h4>Horário de Atendimento</h4>
+                        <h4>Horário de Atendimento Técnico</h4>
                         <p>
                             <strong>Seg-Sab:</strong> <span>11h - 23h</span><br>
                         </p>

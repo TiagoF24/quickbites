@@ -16,7 +16,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+<style>
+    /* Definindo o fundo com uma textura animada */
+    @keyframes textureAnimation {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 100% 100%;
+        }
+    }
+
+    /* Aplicando a textura animada */
+    .min-h-screen {
+        min-height: 100vh;
+        background: url('public/img/texture.png'); /* Link de textura de fundo */
+        background-size: 50px 50px; /* Tamanho da textura */
+        animation: textureAnimation 10s linear infinite;
+    }
+</style>
+
 <body class="font-sans antialiased">
+
     <div class="min-h-screen bg-orange-500">
         @include('layouts.navigation')
 
@@ -31,6 +52,8 @@
 
         <!-- Page Content -->
         <main>
+            <div class="texture"></div>
+
             {{ $slot }}
         </main>
     </div>

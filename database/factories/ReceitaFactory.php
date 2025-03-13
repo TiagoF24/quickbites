@@ -17,13 +17,11 @@ class ReceitaFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => $this->faker->name(),
-            'descricao' => $this->faker->text(),
-            'imagem' => $this->faker->imageUrl(),
-            'video' => $this->faker->url(),
-            'categoria' => $this->faker->word(),
-            'tempo' => $this->faker->randomNumber(),
-            'ingredientes' => $this->faker->text(),
+            'receita_titulo' => $this->faker->sentence,
+            'receita_descricao' => $this->faker->paragraph,
+            'receita_foto' => $this->faker->imageUrl(),
+            'categoria' => $this->faker->word,
+            'receita_duracao' => $this->faker->word,
         ];
     }
 }

@@ -10,17 +10,13 @@ class ReceitaController extends Controller
     public function store(Store $request)
     {
         Receita::create([
-            'nome' => $request['nome'],
-            'descricao' => $request['descricao'],
-            'imagem' => $request['imagem'],
-            'video' => $request['video'],
+            'receita_titulo' => $request['receita_titulo'],
+            'receita_descricao' => $request['receita_descricao'],
+            'receita_foto' => $request['receita_foto'],
             'categoria' => $request['categoria'],
-            'tempo' => $request['tempo'],
-            'ingredientes' => $request['ingredientes'],
+            'receita_duracao' => $request['receita_duracao'],
         ]);
 
         return redirect()->route('dashboard');
-
-
     }
 }

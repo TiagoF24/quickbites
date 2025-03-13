@@ -11,12 +11,10 @@ class Receita extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome',
-        'descricao',
-        'imagem',
-        'video',
+        'receita_titulo',
+        'receita_descricao',
+        'receita_foto',
         'categoria',
-        'tempo',
-        'ingredientes',
+        'receita_duracao',
     ];
 }
