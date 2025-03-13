@@ -95,7 +95,7 @@
                         @endguest
 
                         @auth
-                        <li><a href="/dashboard">Criar</a></li>
+                        <li><a href="/criar">Criar</a></li>
                          <!-- Settings Dropdown -->
                         <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
