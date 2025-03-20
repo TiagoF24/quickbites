@@ -12,14 +12,23 @@ return new class () extends Migration {
     {
         Schema::create('receitas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->string('imagem');
-            $table->string('video');
-            $table->string('categoria');
-            $table->string('tempo');
-            $table->text('ingredientes');
             $table->timestamps();
+            $table->string('receita_titulo');
+            $table->text('receita_descricao');
+            $table->string('receita_foto');
+            $table->string('categoria');
+            $table->string('receita_duracao');
+            $table->string('autor');
+
+            // Novas colunas para detalhes da receita
+            $table->text('ingredientes')->nullable(); // Lista de ingredientes
+            $table->text('modo_preparo')->nullable(); // Passos de preparação
+            $table->integer('porcoes')->nullable(); // Número de porções
+            $table->string('nivel_dificuldade', 50)->nullable(); // Nível de dificuldade (fácil, médio, difícil)
+            $table->text('dicas')->nullable(); // Dicas adicionais
+            $table->string('tempo_preparo', 50)->nullable(); // Tempo de preparação
+            $table->string('tempo_cozimento', 50)->nullable(); // Tempo de cozimento
+            $table->integer('calorias')->nullable(); // Calorias por porção
         });
     }
 

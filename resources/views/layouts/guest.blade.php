@@ -69,6 +69,8 @@
             }
         }
 
+        
+
         .content {
             display: flex;
             flex-direction: column;
@@ -87,8 +89,8 @@
     <div class="content">
         <div>
             <a href="/">
-                <img class="login_logo" src="{{ asset('template/img/logo_login.png') }}" alt=""
-                    style="width: 320px; height: 250px;">
+                <img class="login_logo" src="{{ asset('template/img/logos/logo_login.png') }}" alt=""
+                    style="width: 240px; height: 200px;">
             </a>
         </div>
 

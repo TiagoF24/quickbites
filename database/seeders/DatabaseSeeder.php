@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categorias;
 use App\Models\Receita;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Receita::factory(2)->create();
+
+        Categorias::factory(5)->create();
 
     }
 }

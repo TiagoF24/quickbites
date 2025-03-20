@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Receita;
+namespace App\Http\Requests\Categorias;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Store extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class Store extends FormRequest
     public function rules(): array
     {
         return [
-            'receita_titulo' => ['required', 'string', 'max:255'],
-            'receita_descricao' => ['required', 'string'],
-            'receita_foto' => ['required', 'image', 'mimes:jpeg,jpg,png,gif'],
-            'categoria' => ['required', 'string'],
-            'receita_duracao' => ['required', 'string'],
+            'nome' => 'required|string|min:3',
+
         ];
     }
 }

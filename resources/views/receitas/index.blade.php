@@ -1,29 +1,3 @@
-<?php
-// Configuração do banco de dados
-$host = "127.0.0.1"; // ou IP do servidor MySQL
-$user = "root";
-$pass = "";
-$dbname = "quickbites";
-
-// Conectar ao MySQL
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-// Verifica a conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
-
-// Query para buscar receitas
-$sql = "SELECT id, receita_titulo, receita_descricao, receita_foto, receita_duracao, categoria, autor FROM receitas";
-$result = $conn->query($sql);
-
-// Verifica se a query foi bem-sucedida
-if (!$result) {
-    die("Erro na consulta: " . $conn->error);
-}
-?>
-
-
 <x-quickbites-layout>
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
@@ -66,8 +40,7 @@ if (!$result) {
                     </div>
                 </div>
             </div>
-            <!--
-           End Carousel Item -->
+            <!-- End Carousel Item -->
 
             <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -93,35 +66,26 @@ if (!$result) {
         </div><!-- End Section Title -->
 
         <div class="container mt-4 ">
-    <div class="row">
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                <div class="col-md-4">
-                    <div class="card">
-                       <img src="{{ asset('storage/' . $row['receita_foto']) }}" class="card-img-top" alt="<?php echo $row['receita_titulo']; ?>">
-                        <h3 class="card-title"><?php echo $row['receita_titulo']; ?></h3>
-                        <p class="card-text" style="margin-bottom: 20px">Receita por <b><?php echo $row['autor']; ?></b></p>
-                        <p class="card-text"><?php echo $row['receita_descricao']; ?></p>
-                        <p><strong><i class="bi bi-alarm-fill"></i> Duração:</strong>
-                            <?php echo $row['receita_duracao']; ?> min</p>
-                        <p><strong><i class="bi bi-bookmark-fill"></i> Categoria:</strong>
-                            <?php echo $row['categoria']; ?></p>
-                        <a href="{{ route('receitas.show', $row['id']) }}" class="btn btn-warning">Ver Receita</a>
+            <div class="row">
+                @forelse ($receitas as $receita)
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $receita->receita_foto) }}" class="card-img-top" alt="{{ $receita->receita_titulo }}">
+                            <h3 class="card-title">{{ $receita->receita_titulo }}</h3>
+                            <p class="card-text" style="margin-bottom: 20px">Receita por <b>{{ $receita->autor }}</b></p>
+                            <p class="card-text">{{ $receita->receita_descricao }}</p>
+                            <p><strong><i class="bi bi-alarm-fill"></i> Duração:</strong>
+                                {{ $receita->receita_duracao }} min</p>
+                            <p><strong><i class="bi bi-bookmark-fill"></i> Categoria:</strong>
+                                {{ $receita->categoria }}</p>
+                            <a href="{{ route('receitas.show', $receita->id) }}" class="btn btn-warning">Ver Receita</a>
+                        </div>
                     </div>
-                </div>
-                <?php
-            }
-        } else {
-            echo "<p class='text-center'>Nenhuma receita encontrada.</p>";
-        }
-// Fecha a conexão
-$conn->close();
-?>
-    </div>
-</div>  
+                @empty
+                    <p class='text-center'>Nenhuma receita encontrada.</p>
+                @endforelse
+            </div>
+        </div>  
 
     </section><!-- /Menu Section -->
-
 </x-quickbites-layout>
