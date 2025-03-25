@@ -59,13 +59,13 @@
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="/" class="logo d-flex align-items-center">
                     <!-- Uncomment the line below if you also wish to use an image logo -->
-                    <img src="{{ asset('template/img/logos/logo.png') }}" alt="">
-                    <h1 class="sitename">QuickBites</h1>
+                    <img src="{{ asset('template/img/logos/logo_login.png') }}" style="" alt="">
+                    <h1 class="sitename" style="text-shadow: #000000 0px 0px 10px;">QuickBites</h1>
                 </a>
 
                 <nav id="navmenu" class="navmenu">
                     <ul>
-                        <li><a href="#hero" class="active">Início</a></li>
+                        <li><a href="/" class="active">Início</a></li>
                         {{-- <li><a href="#about">About</a></li> --}}
                         {{-- <li><a href="#menu">Menu</a></li> --}}
                         {{-- <li><a href="#specials">Specials</a></li> --}}
@@ -112,9 +112,9 @@
                             }
 
                             .btnCriar:hover {
-                              background-color: #e69600 !important; /* Cor mais escura ao passar o mouse */
+                              background-color: rgb(255, 0, 0) !important; /* Cor mais escura ao passar o mouse */
                             }
-                          </style>
+                        </style>
                         <li>
                             <a href="/criar" class="btnCriar">
                                 <span style="font-size: 24px;">+</span> Criar
@@ -193,8 +193,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h4>Redes Sociais</h4>
                     <div class="social-links d-flex">
-                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.instagram.com/quickbitespt/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
 

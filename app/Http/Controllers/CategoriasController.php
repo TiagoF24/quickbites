@@ -15,6 +15,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
+
         return view('categorias.create');
     }
 
@@ -55,6 +56,7 @@ class CategoriasController extends Controller
         // Criar a categoria
         Categorias::create([
             'nome' => $request->nome,
+
         ]);
 
         return redirect()->back()->with('success', '✔ Categoria criada com sucesso!');

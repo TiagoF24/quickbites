@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Receita\Store;
 use App\Models\Receita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,34 +11,32 @@ class ReceitaController extends Controller
     // ReceitaController.php
     public function store(Request $request)
     {
-        // Validação dos dados
-        $request->validate([
+        // Validate the request data
+        $validated = $request->validate([
             'receita_titulo' => 'required|string|max:255',
             'receita_descricao' => 'required|string',
-            'receita_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240', // 10MB
-            'receita_duracao' => 'required|integer',
+            'receita_foto' => 'nullable|image|max:10240', // 10MB max
+            'receita_duracao' => 'required|integer|min:1',
+            'porcoes' => 'required|integer|min:1',
+            'nivel_dificuldade' => 'required|string',
+            'calorias' => 'nullable|integer',
             'categoria' => 'required|string',
+            'ingredientes' => 'required|string',
+            'modo_preparo' => 'required|string',
+            'dicas' => 'nullable|string',
             'autor' => 'required|string',
         ]);
 
-        // Processar o upload da imagem
-        $path = null; // Default value
+        // Handle file upload
         if ($request->hasFile('receita_foto')) {
-            $file = $request->file('receita_foto');
-            $path = $file->store('receitas', 'public'); // Store image
+            $path = $request->file('receita_foto')->store('receitas', 'public');
+            $validated['receita_foto'] = $path;
         }
 
-        // Criar a receita no banco de dados
-        Receita::create([
-            'receita_titulo' => $request->receita_titulo,
-            'receita_descricao' => $request->receita_descricao,
-            'receita_foto' => $path, // Salva o caminho da imagem
-            'receita_duracao' => $request->receita_duracao,
-            'categoria' => $request->categoria,
-            'autor' => $request->autor,
-        ]);
+        // Create the recipe
+        $receita = Receita::create($validated);
 
-        return redirect()->route('receitas.index')->with('success', 'Receita criada com sucesso!');
+        return redirect()->route('receitas.show', $receita)->with('success', 'Receita criada com sucesso!');
     }
 
 

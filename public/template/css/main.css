@@ -33,7 +33,7 @@
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
     --nav-color: #ffffff; /* The default color of the main navmenu links */
-    --nav-hover-color: #ffb03b; /* Applied to main navmenu links when they are hovered over or active */
+    --nav-hover-color: #f5f5f5; /* Applied to main navmenu links when they are hovered over or active */
     --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
     --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
     --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
@@ -228,13 +228,12 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-    --background-color: rgba(255, 255, 255, 0);
+    background-color: #ff9900; /* Fundo preto com 50% de transparência */
     --default-color: #ffffff;
     --heading-color: #ffffff;
     color: var(--default-color);
     transition: all 0.5s;
     z-index: 997;
-    background-color: #1e160d;
 }
 
 .header .topbar {
@@ -403,7 +402,7 @@ p,
         color: var(--nav-color);
         padding: 18px 15px;
         font-size: 20px;
-        font-family: var(--nav-font);
+        font-family: var(--heading-font);
         font-weight: 400;
         display: flex;
         align-items: center;
@@ -427,6 +426,7 @@ p,
     .navmenu li:hover > a,
     .navmenu .active,
     .navmenu .active:focus {
+      transform: scale(1.1);
         color: var(--nav-hover-color);
     }
 
@@ -624,14 +624,14 @@ p,
 --------------------------------------------------------------*/
 .footer {
     color: var(--default-color);
-    background-color: var(--background-color);
+    background-color: #ff9900;
     font-size: 14px;
     padding: 40px 0 0 0;
     position: relative;
 }
 
 .footer .icon {
-    color: var(--accent-color);
+    color: #1e160d;
     margin-right: 15px;
     font-size: 24px;
     line-height: 0;
@@ -656,14 +656,14 @@ p,
     border-radius: 50%;
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
     font-size: 16px;
-    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    color: color-mix(in srgb, var(--default-color));
     margin-right: 10px;
     transition: 0.3s;
 }
 
 .footer .social-links a:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
+    color: black;
+    border-color: black;
 }
 
 .footer .copyright {

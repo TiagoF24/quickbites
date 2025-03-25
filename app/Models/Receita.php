@@ -10,22 +10,19 @@ class Receita extends Model
     /** @use HasFactory<\Database\Factories\ReceitaFactory> */
     use HasFactory;
 
+    // No modelo Receita.php
     protected $fillable = [
         'receita_titulo',
         'receita_descricao',
         'receita_foto',
-        'categoria',
         'receita_duracao',
-        'autor',
-        'ingredientes',
-        'modo_preparo',
         'porcoes',
         'nivel_dificuldade',
-        'dicas',
-        'tempo_preparo',
-        'tempo_cozimento',
         'calorias',
-
-
+        'categoria',
+        'ingredientes',
+        'modo_preparo',
+        'dicas',
+        'autor',
     ];
 }

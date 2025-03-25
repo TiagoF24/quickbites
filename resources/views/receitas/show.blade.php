@@ -27,16 +27,21 @@
                     <p class="receita-author">por <strong>{{ $receita->autor }}</strong></p>
                     
                     <div class="receita-meta my-4">
-                        <span class="meta-item"><i class="bi bi-alarm-fill"></i> {{ $receita->receita_duracao }} min</span>
-                        <span class="meta-item"><i class="bi bi-bookmark-fill"></i> {{ $receita->categoria }}</span>
+                        <span class="meta-item" style="color: #ff6600"><i class="bi bi-alarm-fill"></i> {{ $receita->receita_duracao }} min</span>
+                        <br>
+                        <span class="meta-item" style="color: #0300b8"><i class="bi bi-bookmark-fill"></i> {{ $receita->categoria }}</span>
+                        <br>
                         @if ($receita->porcoes)
-                            <span class="meta-item"><i class="bi bi-people-fill"></i> {{ $receita->porcoes }} porções</span>
+                            <span class="meta-item" style="color: #1bc70c"><i class="bi bi-people-fill"></i> {{ $receita->porcoes }} porções</span>
+                            <br>
                         @endif
                         @if ($receita->nivel_dificuldade)
-                            <span class="meta-item"><i class="bi bi-bar-chart-fill"></i> {{ $receita->nivel_dificuldade }}</span>
+                            <span class="meta-item" style="color: #1068ec"><i class="bi bi-bar-chart-fill"></i> {{ $receita->nivel_dificuldade }}</span>
+                            <br>
                         @endif
                         @if ($receita->calorias)
-                            <span class="meta-item"><i class="bi bi-fire"></i> {{ $receita->calorias }} cal</span>
+                            <span class="meta-item" style="color: #ff3b3b"><i class="bi bi-fire"></i> {{ $receita->calorias }} cal</span>
+                            <br>
                         @endif
                     </div>
 
@@ -58,7 +63,7 @@
                 <!-- Ingredients -->
                 <div class="col-md-4">
                     <div class="ingredients-section">
-                        <h3><i class="bi bi-cart3"></i> Ingredientes</h3>
+                        <h3 style="color: #ffb03b"><i class="bi bi-cart3"></i> Ingredientes</h3>
                         <ul class="ingredients-list">
                             @foreach (explode("\n", $receita->ingredientes) as $ingrediente)
                                 @if (trim($ingrediente))
@@ -72,7 +77,7 @@
                 <!-- Instructions -->
                 <div class="col-md-8">
                     <div class="instructions-section">
-                        <h3><i class="bi bi-list-ol"></i> Modo de Preparo</h3>
+                        <h3 style="color: #ffb03b"><i class="bi bi-list-ol"></i> Modo de Preparo</h3>
                         <ol class="instructions-list">
                             @foreach (explode("\n", $receita->modo_preparo) as $passo)
                                 @if (trim($passo))
@@ -89,7 +94,7 @@
                 <div class="row mt-5">
                     <div class="col-12">
                         <div class="tips-section">
-                            <h3><i class="bi bi-lightbulb"></i> Dicas</h3>
+                            <h3 style="color: #ffb03b"><i class="bi bi-lightbulb"></i> Dicas</h3>
                             <div class="tips-content">
                                 {!! nl2br(e($receita->dicas)) !!}
                             </div>
@@ -102,7 +107,7 @@
             @if ($receitasRelacionadas->count() > 0)
                 <div class="row mt-5">
                     <div class="col-12">
-                        <h3>Receitas Relacionadas</h3>
+                        <h3 style="color: #ffb03b">Receitas Relacionadas</h3>
                     </div>
                     @foreach ($receitasRelacionadas as $related)
                         <div class="col-md-4">
@@ -121,7 +126,7 @@
             <!-- Comments Section (Optional) -->
             <div class="row mt-5">
                 <div class="col-12">
-                    <h3>Comentários</h3>
+                    <h3 style="color: #ffb03b">Comentários</h3>
                     <!-- Comments form and display would go here -->
                 </div>
             </div>
