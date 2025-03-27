@@ -22,6 +22,16 @@ class ReceitaFactory extends Factory
             'receita_foto' => $this->faker->imageUrl(),
             'categoria' => $this->faker->word,
             'receita_duracao' => $this->faker->word,
+            'autor' => $this->faker->name,
+            'ingredientes' => $this->faker->paragraph,
+            'modo_preparo' => $this->faker->paragraph,
+            'porcoes' => $this->faker->randomNumber(),
+            'nivel_dificuldade' => $this->faker->word,
+            'dicas' => $this->faker->paragraph,
+            'tempo_preparo' => $this->faker->word,
+            'tempo_cozimento' => $this->faker->word,
+            'calorias' => $this->faker->randomNumber(),
+
         ];
     }
 }

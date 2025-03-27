@@ -16,47 +16,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<style>
-    /* Definindo o fundo com uma textura animada */
-    @keyframes textureAnimation {
-        0% {
-            background-position: 0 0;
-        }
-        100% {
-            background-position: 100% 100%;
-        }
-    }
+<body class="font-sans antialiased bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-600">
 
-    /* Aplicando a textura animada */
-    .min-h-screen {
-        min-height: 100vh;
-        background: url('public/img/texture.png'); /* Link de textura de fundo */
-        background-size: 50px 50px; /* Tamanho da textura */
-        animation: textureAnimation 10s linear infinite;
-    }
-</style>
-
-<body class="font-sans antialiased">
-
-    <div class="min-h-screen bg-orange-500">
+    <div class="min-h-screen">
         @include('layouts.navigation')
-
         <!-- Page Heading -->
+         
         @isset($header)
-            <header class="bg-orange-500 shadow">
+            <header class="bg-orange-600 text-white shadow-md">
                 <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
+                    <h1 class="text-3xl font-bold">{{ $header }}</h1>
                 </div>
             </header>
         @endisset
 
         <!-- Page Content -->
-        <main>
-            <div class="texture"></div>
-
-            {{ $slot }}
+        <main class="px-4 py-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                {{ $slot }}
+            </div>
         </main>
     </div>
+
 </body>
 
 </html>

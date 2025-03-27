@@ -47,4 +47,12 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+
+    public function receitas()
+    {
+        return $this->hasMany(Receita::class, 'autor_id');
+    }
+
+
 }
