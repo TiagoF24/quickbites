@@ -32,7 +32,7 @@
                                                     class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                                                     placeholder="A Minha Receita">
                                                 @error('receita_titulo')
-                                                <p class="text-xs text-red-500">{{ $message }}</p>
+                                                    <p class="text-xs text-red-500">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
@@ -46,7 +46,7 @@
                                                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                                 placeholder="Escreve uma breve descrição sobre a tua receita! 😋"> </textarea>
                                             @error('receita_descricao')
-                                            <p class="text-xs text-red-500">{{ $message }}</p>
+                                                <p class="text-xs text-red-500">{{ $message }}</p>
                                             @enderror
                                         </div>
                                         <p class="mt-3 text-gray-600 text-sm/6">Escreve uma breve descrição sobre a tua
@@ -75,7 +75,7 @@
                                                         class="relative font-semibold text-orange-600 bg-white rounded-md cursor-pointer">
                                                         <span>Carregar Ficheiro</span>
                                                         <input id="receita_foto" name="receita_foto" type="file"
-                                                            class="sr-only" accept="image/*"
+                                                            class="sr-only" a               ccept="image/*"
                                                             onchange="previewImage(event)">
                                                     </label>
                                                 </div>
@@ -86,8 +86,8 @@
                                                 </p>
 
                                                 <div id="imagePreviewContainer" class="mt-4 hidden">
-                                                    <img id="imagePreview" class="rounded-md" src="" alt="Image Preview"
-                                                        style="max-width: 500px; height: auto;">
+                                                    <img id="imagePreview" class="rounded-md" src=""
+                                                        alt="Image Preview" style="max-width: 500px; height: auto;">
                                                     <button type="button" class="mt-2 text-red-600"
                                                         onclick="removeImage()">Remover Imagem</button>
                                                 </div>
@@ -96,32 +96,32 @@
                                     </div>
 
                                     <script>
-                                    function previewImage(event) {
-                                        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
-                                        const imagePreview = document.getElementById('imagePreview');
+                                        function previewImage(event) {
+                                            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+                                            const imagePreview = document.getElementById('imagePreview');
 
-                                        const file = event.target.files[0];
-                                        if (file) {
-                                            const reader = new FileReader();
-                                            reader.onload = function(e) {
-                                                imagePreview.src = e.target.result;
-                                                imagePreviewContainer.classList.remove('hidden');
+                                            const file = event.target.files[0];
+                                            if (file) {
+                                                const reader = new FileReader();
+                                                reader.onload = function(e) {
+                                                    imagePreview.src = e.target.result;
+                                                    imagePreviewContainer.classList.remove('hidden');
+                                                }
+                                                reader.readAsDataURL(file);
+                                            } else {
+                                                imagePreviewContainer.classList.add('hidden');
                                             }
-                                            reader.readAsDataURL(file);
-                                        } else {
-                                            imagePreviewContainer.classList.add('hidden');
                                         }
-                                    }
 
-                                    function removeImage() {
-                                        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
-                                        const imagePreview = document.getElementById('imagePreview');
-                                        const fileInput = document.getElementById('receita_foto');
+                                        function removeImage() {
+                                            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+                                            const imagePreview = document.getElementById('imagePreview');
+                                            const fileInput = document.getElementById('receita_foto');
 
-                                        imagePreview.src = '';
-                                        imagePreviewContainer.classList.add('hidden');
-                                        fileInput.value = ''; // Limpa o input do ficheiro
-                                    }
+                                            imagePreview.src = '';
+                                            imagePreviewContainer.classList.add('hidden');
+                                            fileInput.value = ''; // Limpa o input do ficheiro
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                                 placeholder="30">
                                             <span class="text-gray-900">minutos</span>
                                             @error('receita_duracao')
-                                            <p class="text-xs text-red-500">{{ $message }}</p>
+                                                <p class="text-xs text-red-500">{{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
                                                 placeholder="4">
                                             <span class="text-gray-900">porções</span>
                                             @error('porcoes')
-                                            <p class="text-xs text-red-500">{{ $message }}</p>
+                                                <p class="text-xs text-red-500">{{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -171,7 +171,8 @@
                                 <!-- Nível de dificuldade e calorias -->
                                 <div class="grid grid-cols-1 mt-6 gap-x-6 gap-y-8 sm:grid-cols-6">
                                     <div class="sm:col-span-3">
-                                        <label for="nivel_dificuldade" class="block font-medium text-gray-900 text-sm/6">
+                                        <label for="nivel_dificuldade"
+                                            class="block font-medium text-gray-900 text-sm/6">
                                             Nível de Dificuldade
                                         </label>
                                         <div class="mt-2">
@@ -205,10 +206,10 @@
 
                                     <?php
                                     // Conexão simplificada
-                                    $conexao = mysqli_connect("localhost", "root", "", "quickbites");
+                                    $conexao = mysqli_connect('localhost', 'root', '', 'quickbites');
 
                                     // Buscar as categorias
-                                    $sql = "SELECT nome FROM categorias";
+                                    $sql = 'SELECT nome FROM categorias';
                                     $resultado = mysqli_query($conexao, $sql);
                                     ?>
 
@@ -221,7 +222,8 @@
                                             <?php endwhile; ?>
                                         </select>
                                         <svg class="self-center col-start-1 row-start-1 mr-2 text-gray-500 pointer-events-none size-5 justify-self-end sm:size-4"
-                                            viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                            viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"
+                                            data-slot="icon">
                                             <path fill-rule="evenodd"
                                                 d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
                                                 clip-rule="evenodd" />
@@ -229,23 +231,24 @@
                                     </div>
 
                                     <style>
-                                    .btnCriarCategoria {
-                                        background-color: #ff6b00 !important;
-                                        color: white !important;
-                                        padding: 3px !important;
-                                        border-radius: 4px !important;
-                                        display: inline-flex !important;
-                                        align-items: center !important;
-                                        /* gap: 6px !important; */
-                                        text-decoration: none;
-                                    }
+                                        .btnCriarCategoria {
+                                            background-color: #ff6b00 !important;
+                                            color: white !important;
+                                            padding: 3px !important;
+                                            border-radius: 4px !important;
+                                            display: inline-flex !important;
+                                            align-items: center !important;
+                                            /* gap: 6px !important; */
+                                            text-decoration: none;
+                                        }
 
-                                    .btnCriarCategoria:hover {
-                                        background-color: #e69600 !important;
-                                        /* Cor mais escura ao passar o mouse */
-                                    }
+                                        .btnCriarCategoria:hover {
+                                            background-color: #e69600 !important;
+                                            /* Cor mais escura ao passar o mouse */
+                                        }
                                     </style>
-                                    <a href="{{ route('categorias.create') }}" class="btnCriarCategoria" target="_blank">
+                                    <a href="{{ route('categorias.create') }}" class="btnCriarCategoria"
+                                        target="_blank">
                                         <span style="font-size: 24px;">+</span> Criar Categoria
                                     </a>
                                 </div>
@@ -254,7 +257,7 @@
                             <!-- Seção de Ingredientes e Modo de Preparo -->
                             <div class="pb-12 border-b border-gray-900/10">
                                 <h2 class="font-bold text-orange-600 text-base/1">Ingredientes e Modo de Preparo</h2>
-                                
+
                                 <!-- Ingredientes -->
                                 <div class="mt-6">
                                     <label for="ingredientes" class="block font-medium text-gray-900 text-sm/6">
@@ -268,11 +271,11 @@
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             placeholder="2 colheres de sopa de azeite&#10;1 cebola média picada&#10;2 dentes de alho picados&#10;500g de carne moída"></textarea>
                                         @error('ingredientes')
-                                        <p class="text-xs text-red-500">{{ $message }}</p>
+                                            <p class="text-xs text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <!-- Modo de Preparo -->
                                 <div class="mt-6">
                                     <label for="modo_preparo" class="block font-medium text-gray-900 text-sm/6">
@@ -286,11 +289,11 @@
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             placeholder="Aqueça o azeite em uma panela grande em fogo médio.&#10;Adicione a cebola e refogue até ficar transparente.&#10;Adicione o alho e refogue por mais 1 minuto.&#10;Adicione a carne moída e cozinhe até dourar."></textarea>
                                         @error('modo_preparo')
-                                        <p class="text-xs text-red-500">{{ $message }}</p>
+                                            <p class="text-xs text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <!-- Dicas -->
                                 <div class="mt-6">
                                     <label for="dicas" class="block font-medium text-gray-900 text-sm/6">
@@ -315,6 +318,7 @@
                         </div>
 
                         <input type="hidden" name="autor" value="{{ Auth::user()->name }}">
+                        <input type="hidden" name="autor_id" value="{{ Auth::id() }}">
                     </form>
                 </div>
             </div>

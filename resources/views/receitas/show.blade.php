@@ -13,6 +13,7 @@
     <!-- receita Details Section -->
     <section class="receita-details section">
         <div class="container">
+            <div id="printTable"> 
             <div class="row">
                 <!-- receita Image -->
                 <div class="col-lg-6">
@@ -24,7 +25,11 @@
                 <!-- receita Info -->
                 <div class="col-lg-6">
                     <h1 class="receita-title">{{ $receita->receita_titulo }}</h1>
-                    <p class="receita-author">por <strong>{{ $receita->autor }}</strong></p>
+                    <p class="receita-author">por <strong> 
+                        <a href="{{ route('profile.show', $receita->autor_id) }}" class="text-orange-600 hover:underline">
+                            {{ App\Models\User::find($receita->autor_id)->name }}
+                        </a>
+                    </strong></p>
                     
                     <div class="receita-meta my-4">
                         <span class="meta-item" style="color: #ff6600"><i class="bi bi-alarm-fill"></i> {{ $receita->receita_duracao }} min</span>
@@ -51,9 +56,29 @@
 
                     <!-- Action Buttons -->
                     <div class="receita-actions">
-                        <button class="btn btn-dark"><i class="bi bi-printer"></i> Imprimir</button>
-                        <button class="btn btn-danger"><i class="bi bi-heart"></i> Salvar</button>
-                        <button class="btn btn-info"><i class="bi bi-share"></i> Compartilhar</button>
+                        <button class="btn btn-danger"><i class="bi bi-heart"></i> Favoritar</button>
+                        <div class="btn-group">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-share"></i> Partilhar
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
+                                        <i class="bi bi-facebook"></i> Partilha no Facebook 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode('🍽️ Descobre esta receita deliciosa! ' . $receita->receita_titulo . ' 😍 Vê aqui:') }}" target="_blank">
+                                        <i class="bi bi-twitter-x"></i> Partilha no X 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://api.whatsapp.com/send?text={{ urlencode('😋 Tens de experimentar esta receita! ' . $receita->receita_titulo . ' 👉 ' . url()->current()) }}" target="_blank">
+                                        <i class="bi bi-whatsapp"></i> Envia no WhatsApp 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,6 +127,7 @@
                     </div>
                 </div>
             @endif
+        </div>
 
             <!-- Related receitas -->
             @if ($receitasRelacionadas->count() > 0)

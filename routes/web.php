@@ -20,13 +20,16 @@ Route::get('/criar', function () {
 
 Route::get('/categorias/create', [CategoriasController::class, 'create'])->name('categorias.create');
 
-Route::resource('receita', ReceitaController::class);
+Route::post('/categorias', [CategoriasController::class, 'store'])->name('categorias.store');
 
+
+
+// Receitas
 
 Route::get('/receitas/create', [ReceitaController::class, 'create'])->name('receitas.create');
 
 Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas.index');
-Route::post('/receita/store', [ReceitaController::class, 'store'])->name('receita.store');
+Route::post('/receitas', [ReceitaController::class, 'store'])->name('receita.store');
 
 // Listagem de todas as receitas
 Route::get('/receitas', function () {
@@ -38,19 +41,20 @@ Route::get('/receitas/{id}', function ($id) {
     return view('receitas.show', ['id' => $id]);
 })->name('receitas.show');
 
+Route::resource('receita', ReceitaController::class);
 
-// Recipe routes
+
 Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas.index');
 Route::get('/receitas/{id}', [ReceitaController::class, 'show'])->name('receitas.show');
 
-Route::post('/categorias', [CategoriasController::class, 'store'])->name('categorias.store');
 
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::get('/perfil/{user}', [ProfileController::class, 'show'])
+    ->name('profile.show');
 });
+
 
 require __DIR__.'/auth.php';

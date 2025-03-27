@@ -11,13 +11,13 @@ class ReceitaController extends Controller
     // ReceitaController.php
     public function store(Request $request)
     {
-        // Validate the request data
-        $validated = $request->validate([
+        // Validação dos dados
+        $request->validate([
             'receita_titulo' => 'required|string|max:255',
             'receita_descricao' => 'required|string',
-            'receita_foto' => 'nullable|image|max:10240', // 10MB max
-            'receita_duracao' => 'required|integer|min:1',
-            'porcoes' => 'required|integer|min:1',
+            'receita_foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+            'receita_duracao' => 'required|integer',
+            'porcoes' => 'required|integer',
             'nivel_dificuldade' => 'required|string',
             'calorias' => 'nullable|integer',
             'categoria' => 'required|string',
@@ -25,28 +25,42 @@ class ReceitaController extends Controller
             'modo_preparo' => 'required|string',
             'dicas' => 'nullable|string',
             'autor' => 'required|string',
+            'autor_id' => 'required|integer',
         ]);
 
-        // Handle file upload
+        // Salvar a receita
+        $receita = new Receita();
+        $receita->receita_titulo = $request->receita_titulo;
+        $receita->receita_descricao = $request->receita_descricao;
+        // Lógica para salvar a imagem, se necessário
         if ($request->hasFile('receita_foto')) {
-            $path = $request->file('receita_foto')->store('receitas', 'public');
-            $validated['receita_foto'] = $path;
+            $path = $request->file('receita_foto')->store('fotos_receitas', 'public');
+            $receita->receita_foto = $path;
         }
+        $receita->receita_duracao = $request->receita_duracao;
+        $receita->porcoes = $request->porcoes;
+        $receita->nivel_dificuldade = $request->nivel_dificuldade;
+        $receita->calorias = $request->calorias;
+        $receita->categoria = $request->categoria;
+        $receita->ingredientes = $request->ingredientes;
+        $receita->modo_preparo = $request->modo_preparo;
+        $receita->dicas = $request->dicas;
+        $receita->autor = $request->autor;
+        $receita->autor_id = $request->autor_id;
 
-        // Create the recipe
-        $receita = Receita::create($validated);
+        $receita->save();
 
-        return redirect()->route('receitas.show', $receita)->with('success', 'Receita criada com sucesso!');
+        return redirect()->route('receitas.index')->with('success', 'Receita criada com sucesso!');
     }
 
 
 
     /**
-        * Mostra uma listagem receitas.
-        *
-        * @return \Illuminate\Http\Response
-        * @return \Illuminate\View\View
-        */
+     * Mostra uma listagem receitas.
+     *
+     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $receitas = DB::table('receitas')
@@ -68,12 +82,12 @@ class ReceitaController extends Controller
     }
 
     /**
-         * Display the specified receita.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         * @return \Illuminate\View\View
-         */
+     * Display the specified receita.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $receita = DB::table('receitas')
