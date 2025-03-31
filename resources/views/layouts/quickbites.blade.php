@@ -52,21 +52,26 @@
         width: 100%;
         overflow-x: hidden;
         Evitar o scroll horizontal
+        background-color: #000000;
     }
 
     /* Estilização da Navbar com fundo laranja gradiente */
     /* Navbar com textura de cozinha */
     .header {
         background: url("{{ asset('template/img/navbar-texture.png') }}");
+
         /* Link para uma textura de madeira */
         background-size: 100%;
         /* Ajuste para diminuir o padrão */
         background-repeat: repeat;
         /* Faz a textura se repetir */
-        background-position: 40% 60%; /* Centraliza a textura de forma relativa */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+        background-position: 20% 10%;  /* Centraliza a textura de forma relativa */
         padding: 12px 0;
         transition: all 0.3s ease-in-out;
+        background-attachment: fixed; /* Fixa o fundo */
+        z-index: 1; /* Garante que o fundo não se sobreponha ao conteúdo */
+        
+ 
     }
 
 
