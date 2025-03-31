@@ -33,6 +33,8 @@ return new class () extends Migration {
             $table->string('tempo_preparo', 50)->nullable(); // Tempo de preparação
             $table->string('tempo_cozimento', 50)->nullable(); // Tempo de cozimento
             $table->integer('calorias')->nullable(); // Calorias por porção
+            $table->string('autor', 50);
+            
         });
     }
 

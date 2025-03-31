@@ -43,6 +43,10 @@ Route::get('/receitas/{id}', function ($id) {
 
 Route::resource('receita', ReceitaController::class);
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 
 Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas.index');
 Route::get('/receitas/{id}', [ReceitaController::class, 'show'])->name('receitas.show');

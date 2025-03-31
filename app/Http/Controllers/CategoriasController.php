@@ -26,6 +26,7 @@ class CategoriasController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
+    
     {
         // Criar um objeto Inflector para manipular singular/plural
         $inflector = InflectorFactory::create()->build();
@@ -44,10 +45,10 @@ class CategoriasController extends Controller
                     // Verifica se já existe uma categoria com o nome no singular ou plural
                     $existingCategory = Categorias::whereRaw('LOWER(nome) = ?', [$singular])
                         ->orWhereRaw('LOWER(nome) = ?', [$plural])
-                        ->first();
+                        ->exists(); // Verifica a existência
 
                     if ($existingCategory) {
-                        $error('❌ Esta categoria já existe.');
+                        $error($attribute, '❌ Esta categoria já existe.');
                     }
                 },
             ],
@@ -56,9 +57,14 @@ class CategoriasController extends Controller
         // Criar a categoria
         Categorias::create([
             'nome' => $request->nome,
-
         ]);
 
-        return redirect()->back()->with('success', '✔ Categoria criada com sucesso!');
+        return redirect()->route('categorias.create')->with('success', 'Categoria criada com sucesso!');
+    }
+
+    public function index()
+    {
+        $categorias = Categorias::all();
+        return view('categorias.index', compact('categorias'));
     }
 }

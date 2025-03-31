@@ -22,9 +22,7 @@ $result = $conn->query($query); // Execute the query and store the result
 <x-quickbites-layout>
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
             <div class="carousel-item active">
                 <img src="{{ asset('template/img/hero-carousel/hero-carousel-1.jpg') }}" alt="">
                 <div class="carousel-container">
@@ -71,59 +69,70 @@ $result = $conn->query($query); // Execute the query and store the result
             </a>
 
             <ol class="carousel-indicators"></ol>
-
         </div>
-
     </section><!-- /Hero Section -->
 
     <!-- Menu Section -->
     <section id="menu" class="menu section">
-
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Receitas</h2>
             <div><span class="description-title">Últimas </span> receitas</div>
         </div><!-- End Section Title -->
 
-        <div class="container mt-4">
-            <div class="row">
+        <div class="container mt-5">
+            <div class="row g-4">
                 <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $row['receita_foto']) }}" class="card-img-top" alt="<?php echo $row['receita_titulo']; ?>">
-                                <h3 class="card-title"><?php echo $row['receita_titulo']; ?></h3>
-                                <p class="card-text" style="margin-bottom: 20px">Receita por <b><?php
-                                    // Assuming you have a user ID field named "autor_id" in the receitas table
-                                    // You need to adjust this based on your actual table schema
-                                    $authorId = $row['autor_id'];
-                        $authorQuery = "SELECT name FROM users WHERE id = $authorId";
-                        $authorResult = $conn->query($authorQuery);
-                        if ($authorResult->num_rows > 0) {
-                            $author = $authorResult->fetch_assoc();
-                            echo $author['name'];
-                        } else {
-                            echo "Autor não encontrado";
-                        }
-                        ?></b></p>
-                                <p class="card-text"><?php echo $row['receita_descricao']; ?></p>
-                                <p><strong><i class="bi bi-alarm-fill"></i> Duração:</strong> <?php echo $row['receita_duracao']; ?> min</p>
-                                <p><strong><i class="bi bi-bookmark-fill"></i> Categoria:</strong> <?php echo $row['categoria']; ?></p>
-                                <a href="{{ route('receitas.show', $row['id']) }}" class="btn btn-warning">Ver Receita</a>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card shadow-sm h-100">
+                                <img src="{{ asset('storage/' . $row['receita_foto']) }}" class="card-img-top rounded-top" alt="<?php echo $row['receita_titulo']; ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold"><?php echo $row['receita_titulo']; ?></h5>
+                                    <p class="card-text text-muted small mb-2">
+                                        Receita por <b>
+                                            <?php
+                                            $authorId = $row['autor_id'];
+                                            if ($authorId) {
+                                                $stmt = $conn->prepare("SELECT name FROM users WHERE id = ?");
+                                                $stmt->bind_param("i", $authorId);
+                                                $stmt->execute();
+                                                $authorResult = $stmt->get_result();
+        
+                                                echo ($authorResult->num_rows > 0) ? $authorResult->fetch_assoc()['name'] : "Autor não encontrado";
+                                                $stmt->close();
+                                            } else {
+                                                echo "Autor não disponível";
+                                            }
+                                            ?>
+                                        </b>
+                                    </p>
+                                    <p class="card-text"><?php echo $row['receita_descricao']; ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="bi bi-alarm-fill"></i> <?php echo $row['receita_duracao']; ?> min
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="bi bi-bookmark-fill"></i> <?php echo $row['categoria']; ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white border-0 text-center">
+                                    <a href="{{ route('receitas.show', $row['id']) }}" class="btn btn-warning w-100">Ver Receita</a>
+                                </div>
                             </div>
                         </div>
                         <?php
                     }
                 } else {
-                    echo "<p class='text-center'>Nenhuma receita encontrada.</p>";
+                    echo "<p class='text-center text-muted'>Nenhuma receita encontrada.</p>";
                 }
-?>
-
+                ?>
             </div>
-        </div>  
-
+        </div>
+         
     </section><!-- /Menu Section -->
 
 </x-quickbites-layout>

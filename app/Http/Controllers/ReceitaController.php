@@ -61,15 +61,61 @@ class ReceitaController extends Controller
      * @return \Illuminate\Http\Response
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $receitas = DB::table('receitas')
-            ->select('id', 'receita_titulo', 'receita_descricao', 'receita_foto', 'receita_duracao', 'categoria', 'autor')
-            ->orderBy('id', 'desc')
-            ->get();
+        // Cria a query base
+        $query = Receita::query();
 
-        return view('receitas.index', compact('receitas'));
+        // Filtro por nome da receita
+        if ($request->has('search') && !empty($request->get('search'))) {
+            $query->where('receita_titulo', 'like', '%' . $request->get('search') . '%');
+        }
+
+        // Filtro por categoria
+        if ($request->has('category') && !empty($request->get('category'))) {
+            $query->where('categoria', $request->get('category'));
+        }
+
+        // Filtro por duração (maior ou menor que)
+        if ($request->has('duracao') && !empty($request->get('duracao'))) {
+            $duracao = $request->get('duracao');
+            $operador = substr($duracao, 0, 1);
+            $valor = (int) substr($duracao, 1);
+            if ($operador == '>' || $operador == '<') {
+                $query->where('receita_duracao', $operador, $valor);
+            }
+        }
+
+        // Filtro por nível de dificuldade
+        if ($request->has('dificuldade') && !empty($request->get('dificuldade'))) {
+            $query->where('nivel_dificuldade', $request->get('dificuldade'));
+        }
+
+        // Filtro por calorias (maior ou menor que)
+        if ($request->has('calorias') && !empty($request->get('calorias'))) {
+            $calorias = $request->get('calorias');
+            $operador = substr($calorias, 0, 1);
+            $valor = (int) substr($calorias, 1);
+            if ($operador == '>' || $operador == '<') {
+                $query->where('calorias', $operador, $valor);
+            }
+        }
+
+        // Recupera as receitas filtradas ou todas
+        $receitas = $query->orderBy('id', 'desc')->get();
+
+        // Buscar todas as categorias do banco de dados
+        $categorias = \App\Models\Categorias::orderBy('nome')->get();
+
+        // Filtros de Dificuldade
+        $dificuldades = ['Fácil', 'Médio', 'Difícil'];
+
+        return view('receitas.index', compact('receitas', 'categorias', 'dificuldades'));
     }
+
+
+
+
 
 
     public function create()

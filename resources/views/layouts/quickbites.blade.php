@@ -45,6 +45,96 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        Evitar o scroll horizontal
+    }
+
+    /* Estilização da Navbar com fundo laranja gradiente */
+    /* Navbar com textura de cozinha */
+    .header {
+        background: url("{{ asset('template/img/navbar-texture.png') }}");
+        /* Link para uma textura de madeira */
+        background-size: 100%;
+        /* Ajuste para diminuir o padrão */
+        background-repeat: repeat;
+        /* Faz a textura se repetir */
+        background-position: 40% 60%; /* Centraliza a textura de forma relativa */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+        padding: 12px 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    /* Estilização do menu de navegação */
+    .navmenu ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navmenu ul li a {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: white;
+        /* Texto branco para contraste */
+        padding: 10px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animação de hover */
+    .navmenu ul li a:hover,
+    .navmenu ul li a.active {
+        background: rgba(255, 255, 255, 0.2);
+        /* Efeito de destaque */
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Dropdown */
+    .navmenu .dropdown ul {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navmenu .dropdown:hover ul {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Estilização do botão Criar */
+    .btnCriar {
+        background: rgba(255, 255, 255, 0.2);
+        color: white !important;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btnCriar:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+</style>
 
 
 
@@ -72,7 +162,7 @@
                         {{-- <li><a href="#events">Events</a></li> --}}
                         {{-- <li><a href="#chefs">Chefs</a></li> --}}
                         {{-- <li><a href="#gallery">Gallery</a></li> --}}
-                        <li class="dropdown"><a href="#"><span>Receitas</span> <i
+                        <li class="dropdown"><a href="/receitas"><span>Receitas</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
                                 <li><a href="#">🥗 Entradas</a></li>
@@ -94,48 +184,49 @@
                             </ul>
                         </li>
                         @guest
-                        <li><a href="/login">Entrar</a></li>
-                        <li><a href="/register">Registrar</a></li>
+                            <li><a href="/login">Entrar</a></li>
+                            <li><a href="/register">Registrar</a></li>
                         @endguest
 
                         @auth
-                        <style>
-                            .btnCriar {
-                              background-color: #ff6b00 !important;
-                              color: white !important;
-                              padding: 8px 16px !important;
-                              border-radius: 4px !important;
-                              display: inline-flex !important;
-                              align-items: center !important;
-                              gap: 6px !important;
-                              text-decoration: none;
-                            }
+                            <style>
+                                .btnCriar {
+                                    background-color: #ff6b00 !important;
+                                    color: white !important;
+                                    padding: 8px 16px !important;
+                                    border-radius: 4px !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                    gap: 6px !important;
+                                    text-decoration: none;
+                                }
 
-                            .btnCriar:hover {
-                              background-color: rgb(255, 0, 0) !important; /* Cor mais escura ao passar o mouse */
-                            }
-                        </style>
-                        <li>
-                            <a href="/criar" class="btnCriar">
-                                <span style="font-size: 24px;">+</span> Criar
-                            </a>
-                          </li>
+                                .btnCriar:hover {
+                                    background-color: rgb(255, 0, 0) !important;
+                                    /* Cor mais escura ao passar o mouse */
+                                }
+                            </style>
+                            <li>
+                                <a href="/criar" class="btnCriar">
+                                    <span style="font-size: 24px;">+</span> Criar
+                                </a>
+                            </li>
 
-                        <!-- Settings Dropdown -->
-                        <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
-                            <ul>
-                                <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-responsive-nav-link :href="route('logout')"
+                            <!-- Settings Dropdown -->
+                            <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
+                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                <ul>
+                                    <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-responsive-nav-link :href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-responsive-nav-link>
-                                </form>
-                            </ul>
-                        </li>
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </form>
+                                </ul>
+                            </li>
                         @endauth
 
                     </ul>
@@ -193,7 +284,8 @@
                 <div class="col-lg-3 col-md-6">
                     <h4>Redes Sociais</h4>
                     <div class="social-links d-flex">
-                        <a href="https://www.instagram.com/quickbitespt/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.instagram.com/quickbitespt/" class="instagram" target="_blank"><i
+                                class="bi bi-instagram"></i></a>
                     </div>
                 </div>
 
