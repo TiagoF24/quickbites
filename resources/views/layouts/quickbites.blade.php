@@ -70,8 +70,8 @@
         transition: all 0.3s ease-in-out;
         background-attachment: fixed; /* Fixa o fundo */
         z-index: 1; /* Garante que o fundo não se sobreponha ao conteúdo */
-        
- 
+
+
     }
 
 
@@ -234,6 +234,7 @@
                             </li>
                         @endauth
 
+                    
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>

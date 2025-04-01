@@ -4,13 +4,11 @@ use App\Http\Controllers\CategoriasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReceitaController;
+use App\Http\Controllers\AdminController;
+
 
 Route::get('/', function () {
     return view('welcome');
-    if (app()->isLocal()) {
-        auth()->loginUsingId(1);
-        return to_route('dashboard');
-    }
 });
 
 Route::get('/criar', function () {
@@ -59,6 +57,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/perfil/{user}', [ProfileController::class, 'show'])
     ->name('profile.show');
 });
+
+
+Route::get('/admin', [AdminController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
