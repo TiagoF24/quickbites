@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property-read User $autorRelation
+ * @property-read 
  */
 class Receita extends Model
 {
@@ -94,13 +95,12 @@ class Receita extends Model
     {
         return $this->hasMany(Rating::class, 'receita_id');
     }
-
-    // Método para obter a avaliação média
+    
     public function getAverageRatingAttribute()
     {
-        return $this->ratings()->avg('rating') ?: 0;
+        return $this->ratings->avg('rating') ?: 0;
     }
-
+    
     public function favoritedBy()
     {
         return $this->belongsToMany(User::class, 'favorites', 'receita_id', 'user_id')->withTimestamps();

@@ -51,8 +51,7 @@
         padding: 0;
         width: 100%;
         overflow-x: hidden;
-        Evitar o scroll horizontal
-        background-color: #000000;
+        Evitar o scroll horizontal background-color: #000000;
     }
 
     /* Estilização da Navbar com fundo laranja gradiente */
@@ -65,11 +64,14 @@
         /* Ajuste para diminuir o padrão */
         background-repeat: repeat;
         /* Faz a textura se repetir */
-        background-position: 20% 10%;  /* Centraliza a textura de forma relativa */
+        background-position: 20% 10%;
+        /* Centraliza a textura de forma relativa */
         padding: 12px 0;
         transition: all 0.3s ease-in-out;
-        background-attachment: fixed; /* Fixa o fundo */
-        z-index: 1; /* Garante que o fundo não se sobreponha ao conteúdo */
+        background-attachment: fixed;
+        /* Fixa o fundo */
+        z-index: 1;
+        /* Garante que o fundo não se sobreponha ao conteúdo */
 
 
     }
@@ -194,51 +196,76 @@
                         @endguest
 
                         @auth
-                        <style>
-                            .btnCriar {
-                                background-color: #ff6b00 !important;
-                                color: white !important;
-                                padding: 8px 16px !important;
-                                border-radius: 4px !important;
-                                display: inline-flex !important;
-                                align-items: center !important;
-                                gap: 6px !important;
-                                text-decoration: none;
-                            }
-                    
-                            .btnCriar:hover {
-                                background-color: rgb(255, 0, 0) !important;
-                                /* Cor mais escura ao passar o mouse */
-                            }
-                        </style>
-                        <li>
-                            <a href="/criar" class="btnCriar">
-                                <span style="font-size: 24px;">+</span> Criar
-                            </a>
-                        </li>
-                    
-                        <li>
-                            <a href="{{ route('favorites.index') }}">
-                                <i class="bi bi-heart-fill"></i> Meus Favoritos
-                            </a>
-                        </li>
-                    
-                        <!-- Settings Dropdown -->
-                        <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
-                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                            <ul>
-                                <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-responsive-nav-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-responsive-nav-link>
-                                </form>
-                            </ul>
-                        </li>
-                    @endauth
+                            <style>
+                                .btnCriar {
+                                    background-color: #ff6b00 !important;
+                                    color: white !important;
+                                    padding: 8px 16px !important;
+                                    border-radius: 4px !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                    gap: 6px !important;
+                                    text-decoration: none;
+                                }
+
+                                .btnCriar:hover {
+                                    background-color: rgb(255, 0, 0) !important;
+                                    /* Cor mais escura ao passar o mouse */
+                                }
+
+
+                                .btnFav {
+                                    background-color:rgb(255, 0, 0) !important;
+                                    color: white !important;
+                                    padding: 8px 16px !important;
+                                    border-radius: 4px !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                    gap: 6px !important;
+                                    text-decoration: none;
+                                }
+
+                                .btnFav:hover {
+                                    background-color: rgb(255, 106, 106) !important;
+                                    /* Cor mais escura ao passar o mouse */
+                                }
+                            </style>
+                            <li>
+                                <a href="/criar" class="btnCriar">
+                                    <span style="font-size: 24px;">+</span> Criar
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('favorites.index') }}" class="btnFav"> 
+                                    <i class="bi bi-heart-fill" ></i> Meus Favoritos
+                                </a>
+                            </li>
+
+                            <!-- Settings Dropdown -->
+                            <li class="dropdown">
+                                <a href="#">
+                                    @if(Auth::user()->profile_photo)
+                                        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile"
+                                            class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    @else
+                                        <i class="bi bi-person-circle me-2"></i>
+                                    @endif
+                                    <span>{{ Auth::user()->name }}</span>
+                                    <i class="bi bi-chevron-down toggle-dropdown"></i>
+                                </a>
+                                <ul>
+                                    <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </form>
+                                </ul>
+                            </li>
+                        @endauth
 
 
                     </ul>

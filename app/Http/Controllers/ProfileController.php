@@ -8,18 +8,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile.
      */
-    public function show(Request $request): View
+    public function show($userId)
     {
+        // Buscar o usuário pelo ID passado na URL
+        $user = User::findOrFail($userId);
+        
         return view('profile.show', [
-            'user' => $request->user(),
+            'user' => $user
         ]);
     }
+    
 
     /**
      * Display the user's profile form.

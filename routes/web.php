@@ -25,9 +25,13 @@ Route::post('/categorias', [CategoriasController::class, 'store'])->name('catego
 // Receitas
 
 Route::get('/receitas/create', [ReceitaController::class, 'create'])->name('receitas.create');
-
+Route::get('/receitas/{id}', [ReceitaController::class, 'show'])->name('receitas.show');
 Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas.index');
 Route::post('/receitas', [ReceitaController::class, 'store'])->name('receita.store');
+
+Route::delete('/receitas/{receita}/ratings/{rating}', [App\Http\Controllers\ReceitaController::class, 'deleteRating'])
+    ->name('receitas.delete-rating')
+    ->middleware('auth');
 
 // Listagem de todas as receitas
 Route::get('/receitas', function () {
