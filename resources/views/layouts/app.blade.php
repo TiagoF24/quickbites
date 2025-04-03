@@ -139,6 +139,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+
         }
 
         .page-header::after {
@@ -155,7 +157,7 @@
         }
 
         .page-header h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2rem;
             margin: 0;
@@ -389,7 +391,6 @@
                     <h1 class="sitename">QuickBites</h1>
                 </a>
 
-                @include('layouts.navigation')
             </div>
         </header>
 

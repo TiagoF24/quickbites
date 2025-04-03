@@ -1,10 +1,10 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-white">
+        <h2 class="text-lg font-medium text-gray-900">
             {{ __('Apagar Conta') }}
         </h2>
 
-        <p class="mt-1 text-sm text-white">
+        <p class="mt-1 text-sm text-gray-900">
             {{ __('Assim que a sua conta for apagada, todos os seus recursos e dados serão eliminados permanentemente.') }}
         </p>
     </header>

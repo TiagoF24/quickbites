@@ -28,8 +28,8 @@
                     <!-- Formulários de Edição -->
                     <div class="grid grid-cols-1 gap-8 md:grid-cols-1">
                         <!-- Informações do Perfil -->
-                        <div class="p-6 bg-white rounded-lg shadow">
-                            <h3 class="mb-4 text-lg font-bold text-orange-600">
+                        <div class="p-6 bg-white rounded-lg shadow text-gray-900">
+                            <h3 class="text-lg font-bold text-orange-600">
                                 <i class="bi bi-person-fill mr-2"></i>Informações do Perfil
                             </h3>
                             <div class="max-w-xl">
@@ -38,18 +38,18 @@
                         </div>
 
                         <!-- Atualizar Senha -->
-                        <div class="p-6 bg-white rounded-lg shadow">
-                            <h3 class="mb-4 text-lg font-bold text-orange-600">
+                        <div class="p-6 bg-white rounded-lg shadow" >
+                            <h3 class="text-lg font-bold text-orange-600">
                                 <i class="bi bi-shield-lock-fill mr-2"></i>Segurança
                             </h3>
-                            <div class="max-w-xl">
+                            <div class="max-w-xl text-gray-900" >
                                 @include('profile.partials.update-password-form')
                             </div>
                         </div>
 
                         <!-- Excluir Conta -->
                         <div class="p-6 bg-white rounded-lg shadow">
-                            <h3 class="mb-4 text-lg font-bold text-red-600">
+                            <h3 class="text-lg font-bold text-red-600">
                                 <i class="bi bi-exclamation-triangle-fill mr-2"></i>Zona de Perigo
                             </h3>
                             <div class="max-w-xl">
