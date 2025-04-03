@@ -217,6 +217,12 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="{{ route('favorites.index') }}">
+                                    <i class="bi bi-heart-fill"></i> Meus Favoritos
+                                </a>
+                            </li>
+
                             <!-- Settings Dropdown -->
                             <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
                                         class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -234,7 +240,7 @@
                             </li>
                         @endauth
 
-                    
+
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>

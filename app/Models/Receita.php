@@ -77,4 +77,41 @@ class Receita extends Model
     {
         $this->attributes['autor'] = $value;
     }
+
+    // Add these relationships to the Receita model
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'receita_id');
+    }
+
+    // Método para obter a avaliação média
+    public function getAverageRatingAttribute()
+    {
+        return $this->ratings()->avg('rating') ?: 0;
+    }
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'receita_id', 'user_id')->withTimestamps();
+    }
+
+
+
+    // Method to check if user has favorited this recipe
+    public function isFavoritedByUser($userId)
+    {
+        return $this->favorites()->where('user_id', $userId)->exists();
+    }
+
+    // Method to get user's rating for this recipe
+    public function userRating($userId)
+    {
+        return $this->ratings()->where('user_id', $userId)->first();
+    }
 }

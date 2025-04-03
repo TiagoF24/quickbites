@@ -62,4 +62,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/admin', [AdminController::class, 'index']);
 
 
+// Favorite routes
+Route::middleware(['auth'])->group(function () {
+    Route::post('/receitas/{receita}/favorite', [App\Http\Controllers\FavoriteController::class, 'toggle'])->name('receitas.favorite');
+    Route::get('/favorites', [App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
+
+    // Rating routes
+    Route::post('/receitas/{receita}/rate', [App\Http\Controllers\RatingController::class, 'store'])->name('receitas.rate');
+});
+
+// User favorites (public)
+Route::get('/profile/{user}/favorites', [App\Http\Controllers\ReceitaController::class, 'userFavorites'])->name('profile.favorites');
+
+
 require __DIR__.'/auth.php';

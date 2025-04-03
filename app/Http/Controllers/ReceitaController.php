@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Receita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReceitaController extends Controller
 {
@@ -136,20 +137,31 @@ class ReceitaController extends Controller
      */
     public function show($id)
     {
-        $receita = DB::table('receitas')
-            ->where('id', $id)
-            ->first();
+        $receita = Receita::findOrFail($id);
 
-        if (!$receita) {
-            abort(404, 'Receita não encontrada');
-        }
-
-        $receitasRelacionadas = DB::table('receitas')
-            ->where('categoria', $receita->categoria)
+        $receitasRelacionadas = Receita::where('categoria', $receita->categoria)
             ->where('id', '!=', $id)
             ->limit(3)
             ->get();
 
-        return view('receitas.show', compact('receita', 'receitasRelacionadas'));
+        // Get the current user's rating if they're logged in
+        $userRating = null;
+        if (Auth::check()) {
+            $userRating = \App\Models\Rating::where('receita_id', $id)
+                ->where('user_id', Auth::id())
+                ->first();
+        }
+
+        return view('receitas.show', compact('receita', 'receitasRelacionadas', 'userRating'));
+    }
+
+
+
+    public function userFavorites($userId)
+    {
+        $user = \App\Models\User::findOrFail($userId);
+        $favorites = $user->favoriteReceitas()->paginate(12);
+
+        return view('receitas.favorites', compact('user', 'favorites'));
     }
 }
