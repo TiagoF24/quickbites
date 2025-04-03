@@ -87,7 +87,30 @@
                         <div class="card">
                             <img src="{{ asset('storage/' . $receita->receita_foto) }}" class="card-img-top" alt="{{ $receita->receita_titulo }}">
                             <h3 class="card-title">{{ $receita->receita_titulo }}</h3>
-                            <p class="card-text"><b>{{ $receita->autor }}</b></p>
+                            
+                            <div class="d-flex align-items-center mb-2">
+                                @php
+                                    // Tente obter o usuário pelo ID se disponível, ou pelo nome como fallback
+                                    $autorUser = null;
+                                    if (isset($receita->user_id)) {
+                                        $autorUser = \App\Models\User::find($receita->user_id);
+                                    }
+                                @endphp
+                                
+                                @if($autorUser && $autorUser->profile_photo)
+                                    <img src="{{ asset('storage/' . $autorUser->profile_photo) }}" 
+                                         alt="{{ $receita->autor }}" 
+                                         class="rounded-circle me-2" 
+                                         style="width: 30px; height: 30px; object-fit: cover;">
+                                @else
+                                    <div class="rounded-circle me-2 d-flex align-items-center justify-content-center bg-orange-500 text-white" 
+                                         style="width: 30px; height: 30px; font-size: 14px;">
+                                        {{ strtoupper(substr($receita->autor, 0, 1)) }}
+                                    </div>
+                                @endif
+                                <p class="card-text mb-0"><b>{{ $receita->autor }}</b></p>
+                            </div>
+                            
                             <p class="card-text">{{ $receita->receita_descricao }}</p>
                             <p><strong><i class="bi bi-alarm-fill"></i> Duração:</strong> {{ $receita->receita_duracao }} min</p>
                             <p><strong><i class="bi bi-bookmark-fill"></i> Categoria:</strong> {{ $receita->categoria }}</p>

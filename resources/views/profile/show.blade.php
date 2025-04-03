@@ -7,9 +7,15 @@
                     <div class="border-b border-gray-200 pb-6 mb-6">
                         <div class="flex items-center space-x-4">
                             <!-- Avatar - Ensuring it's perfectly round -->
-                            <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl">
-                                {{ strtoupper(substr($user->name, 0, 1)) }}
-                            </div>
+                            @if($user->profile_photo)
+                                <img src="{{ asset('storage/' . $user->profile_photo) }}" 
+                                     alt="{{ $user->name }}" 
+                                     class="w-16 h-16 rounded-full object-cover">
+                            @else
+                                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl">
+                                    {{ strtoupper(substr($user->name, 0, 1)) }}
+                                </div>
+                            @endif
                             
                             <div>
                                 <h2 class="text-xl font-bold">{{ $user->name }}</h2>

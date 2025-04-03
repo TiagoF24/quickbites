@@ -67,6 +67,11 @@ class Receita extends Model
         return $this->attributes['autor'] ?? null;
     }
 
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
     /**
      * Setter for author name.
      *
