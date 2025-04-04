@@ -174,6 +174,13 @@
                                     {{ $receita->isFavoritedByUser(Auth::id()) ? 'Favoritado' : 'Favoritar' }}
                                 </button>
                             </form>
+
+                            <!-- Botão de Editar (apenas para o autor) -->
+                            @if(Auth::id() == $receita->autor_id)
+                            <a href="{{ route('receitas.edit', $receita->id) }}" class="btn btn-primary btn-lg">
+                                <i class="bi bi-pencil-square"></i> Editar Receita
+                            </a>
+                            @endif
                             @endauth
 
                             <div class="btn-group">
@@ -202,6 +209,21 @@
                                             target="_blank">
                                             <i class="bi bi-whatsapp text-success"></i> WhatsApp
                                         </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="mailto:?subject={{ urlencode('Receita: ' . $receita->receita_titulo) }}&body={{ urlencode('Olá! Encontrei esta receita deliciosa e pensei que gostarias: ' . url()->current()) }}"
+                                            target="_blank">
+                                            <i class="bi bi-envelope text-secondary"></i> Email
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="copyRecipeLink()">
+                                            <i class="bi bi-link-45deg text-info"></i> Copiar Link
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -358,7 +380,7 @@
                     <div class="card-header bg-white border-0 pt-4">
                         <h4 class="mb-0 fw-bold">
                             <i class="bi bi-star-half text-warning me-2"></i>
-                            Avaliações dos Utilizadors
+                            Avaliações dos Utilizadores
                         </h4>
                     </div>
                     <div class="card-body">
@@ -437,6 +459,7 @@
                         @endif
 
                         <!-- Formulário de Avaliação com Design Moderno -->
+                        <!-- Formulário de Avaliação com Design Moderno -->
                         @auth
                         <div class="mt-4 rating-form">
                             <div class="card border bg-light">
@@ -447,8 +470,7 @@
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('receitas.rate', $receita->id) }}" method="POST"
-                                        data-receita-id="{{ $receita->id }}">
+                                    <form action="{{ route('receitas.rate', $receita->id) }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Sua avaliação:</label>
@@ -462,7 +484,7 @@
                                                 @for ($i = 1; $i <= 5; $i++) <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="rating"
                                                         id="rating{{ $i }}" value="{{ $i }}"
-                                                        {{ $currentRating == $i ? 'checked' : '' }}>
+                                                        {{ $currentRating == $i ? 'checked' : '' }} required>
                                                     <label class="form-check-label d-flex align-items-center"
                                                         for="rating{{ $i }}">
                                                         <span class="text-warning me-1">
@@ -505,11 +527,28 @@
                         </div>
                     </div>
                     @endauth
+
                 </div>
             </div>
         </div>
         </div>
     </section>
+
+    <!-- Modal de Zoom da Imagem -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">{{ $receita->receita_titulo }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="{{ asset('storage/' . $receita->receita_foto) }}" class="img-fluid"
+                        alt="{{ $receita->receita_titulo }}">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts específicos para esta página -->
     <script>
@@ -517,7 +556,8 @@
         // Inicializar tooltips do Bootstrap
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(
-            tooltipTriggerEl));
+            tooltipTriggerEl
+        ));
 
         // Favorite button functionality
         const favoriteButtons = document.querySelectorAll('.favorite-button');
@@ -562,7 +602,7 @@
 
                 // Verificar se o atributo data-receita-id existe
                 const receitaId = this.dataset.receitaId || this.action.split('/').filter(Boolean)
-            .pop();
+                    .pop();
 
                 const formData = new FormData(this);
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
@@ -674,6 +714,58 @@
                 this.style.transform = 'translateY(0)';
             });
         });
+
+        // Função para copiar link da receita
+        window.copyRecipeLink = function() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                // Mostrar notificação de sucesso
+                const notification = document.createElement('div');
+                notification.className = 'position-fixed bottom-0 end-0 p-3';
+                notification.style.zIndex = '5';
+                notification.innerHTML = `
+                    <div class="toast show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <i class="bi bi-check-circle me-2"></i> Link copiado para a área de transferência!
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+
+                // Remover notificação após 3 segundos
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            });
+        };
+
+        // Registrar visualização da receita
+        function registerRecipeView() {
+            const receitaId = {
+                {
+                    $receita - > id
+                }
+            };
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+            if (csrfToken) {
+                fetch(`/receitas/${receitaId}/view`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'same-origin'
+                }).catch(error => console.error('Error registering view:', error));
+            }
+        }
+
+        // Registrar visualização após 5 segundos (para evitar contagens falsas)
+        setTimeout(registerRecipeView, 5000);
     });
 
     // Adicionar estilos CSS personalizados
@@ -706,35 +798,153 @@
         
         /* Estilo para impressão */
         @media print {
-            .breadcrumb, .receita-actions, .nav-tabs, #receitaTabsContent, .recipe-ratings, footer, header {
+            .breadcrumb, .receita-actions, .nav-tabs, .recipe-ratings, footer, header, 
+            .btn, .rating-form, .form-check {
                 display: none !important;
             }
             
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
             .receita-title {
-                font-size: 24pt;
-                margin-bottom: 10pt;
+                font-size: 24pt !important;
+                margin-bottom: 10pt !important;
             }
             
             .receita-meta {
-                margin-bottom: 15pt;
+                margin-bottom: 15pt !important;
+            }
+            
+            .tab-pane {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .tab-content > .tab-pane {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
             
             .ingredients-section, .instructions-section {
-                page-break-inside: avoid;
-                margin-top: 15pt;
+                page-break-inside: avoid !important;
+                margin-top: 15pt !important;
             }
             
             .ingredients-section h3, .instructions-section h3 {
-                font-size: 16pt;
-                margin-bottom: 10pt;
+                font-size: 16pt !important;
+                margin-bottom: 10pt !important;
             }
             
             .ingredients-list li, .instructions-list li {
-                font-size: 12pt;
-                margin-bottom: 5pt;
+                font-size: 12pt !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            .card {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            
+            .col-md-3, .col-md-4, .col-md-6, .col-lg-6 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 0 0 100% !important;
+            }
+            
+            #receitaTabsContent {
+                border: none !important;
+            }
+            
+            /* Adicionar cabeçalho e rodapé de impressão */
+            @page {
+                margin: 2cm;
+            }
+            
+            body::before {
+                content: "QuickBites - Receita: {{ $receita->receita_titulo }}";
+                display: block;
+                text-align: center;
+                font-size: 14pt;
+                font-weight: bold;
+                margin-bottom: 20pt;
+            }
+            
+            body::after {
+                content: "Impresso de QuickBites.com em " attr(data-print-date);
+                display: block;
+                text-align: center;
+                font-size: 9pt;
+                margin-top: 20pt;
             }
         }
     `;
     document.head.appendChild(customStyles);
+
+    // Adicionar data de impressão ao body
+    document.body.setAttribute('data-print-date', new Date().toLocaleDateString());
+    </script>
+
+    <!-- Script para o modo de impressão -->
+    <script>
+    window.addEventListener('beforeprint', function() {
+        // Expandir todas as abas para impressão
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+            pane.classList.add('active', 'show');
+        });
+
+        // Adicionar classe de impressão ao corpo
+        document.body.classList.add('printing');
+
+        // Remover checkboxes e outros elementos interativos
+        document.querySelectorAll('.form-check-input').forEach(checkbox => {
+            checkbox.style.display = 'none';
+        });
+    });
+
+    window.addEventListener('afterprint', function() {
+        // Restaurar estado das abas
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+            if (!pane.id.includes('ingredientes-tab-pane')) {
+                pane.classList.remove('active', 'show');
+            }
+        });
+
+        // Remover classe de impressão
+        document.body.classList.remove('printing');
+
+        // Restaurar checkboxes
+        document.querySelectorAll('.form-check-input').forEach(checkbox => {
+            checkbox.style.display = '';
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar tooltips do Bootstrap
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(
+            tooltipTriggerEl));
+
+        // Verificar se o formulário de avaliação existe
+        const ratingForm = document.querySelector('.rating-form form');
+        if (ratingForm) {
+            ratingForm.addEventListener('submit', function(e) {
+                // Verificar se uma avaliação foi selecionada
+                const ratingSelected = document.querySelector('input[name="rating"]:checked');
+                if (!ratingSelected) {
+                    e.preventDefault();
+                    alert('Por favor, selecione uma avaliação de 1 a 5 estrelas.');
+                    return false;
+                }
+
+                // O formulário será enviado normalmente
+                return true;
+            });
+        }
+    });
     </script>
 </x-quickbites-layout>

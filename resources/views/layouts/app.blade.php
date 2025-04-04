@@ -415,101 +415,65 @@
 </main>
 
 <!-- Enhanced Footer with Gradient Border -->
-<footer id="footer" class="footer">
-    <div class="container">
-        <div class="row gy-4">
-            <div class="col-lg-3 col-md-6 d-flex">
-                <i class="bi bi-geo-alt icon"></i>
-                <div class="address">
-                    <h4>Localização</h4>
-                    <p>Rua do Parque</p>
-                    <p>2120-092, Salvaterra de Magos</p>
-                </div>
-            </div>
+<footer id="footer" class="footer dark-background">
 
-            <div class="col-lg-3 col-md-6 d-flex">
-                <i class="bi bi-telephone icon"></i>
-                <div>
-                    <h4>Contacto</h4>
-                    <p>
-                        <strong>Email:</strong> <span>contact@quickbites.pt</span><br>
-                        <strong>Telefone:</strong> <span>+351 123 456 789</span>
-                    </p>
-                </div>
-            </div>
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-geo-alt icon"></i>
+                    <div class="address">
+                        <h4>Endereço</h4>
+                        <p>Rua do Parque</p>
+                        <p>2120-092, Salvaterra de Magos</p>
+                        <p></p>
+                    </div>
 
-            <div class="col-lg-3 col-md-6 d-flex">
-                <i class="bi bi-clock icon"></i>
-                <div>
-                    <h4>Horário de Atendimento</h4>
-                    <p>
-                        <strong>Seg-Sex:</strong> <span>9h - 18h</span><br>
-                        <strong>Sab-Dom:</strong> <span>11h - 15h</span>
-                    </p>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <h4>Siga-nos</h4>
-                <div class="social-links d-flex">
-                    <a href="https://www.instagram.com/quickbitespt/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="pinterest"><i class="bi bi-pinterest"></i></a>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-telephone icon"></i>
+                    <div>
+                        <h4>Contacto</h4>
+                        <p>
+                            <strong>Email:</strong> <span>contact@quickbites.pt</span><br>
+                        </p>
+                    </div>
                 </div>
-                
-                <div class="mt-4">
-                    <h4>Newsletter</h4>
-                    <p class="mb-2">Receba nossas melhores receitas e dicas culinárias!</p>
-                    <form class="d-flex">
-                        <input type="email" class="form-control me-2" placeholder="Seu email">
-                        <button class="btn-custom">Assinar</button>
-                    </form>
+
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-clock icon"></i>
+                    <div>
+                        <h4>Horário de Atendimento Técnico</h4>
+                        <p>
+                            <strong>Seg-Sab:</strong> <span>11h - 23h</span><br>
+                        </p>
+                    </div>
                 </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links d-flex">
+                        <a href="https://www.instagram.com/quickbitespt/" class="instagram" target="_blank"><i
+                                class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <h4>Sobre QuickBites</h4>
-                <p>Somos uma comunidade apaixonada por culinária, compartilhando receitas deliciosas e experiências gastronômicas para todos os gostos e níveis de habilidade.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h4>Links Rápidos</h4>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-white-50 text-decoration-none mb-2 d-inline-block">Início</a></li>
-                    <li><a href="/receitas" class="text-white-50 text-decoration-none mb-2 d-inline-block">Receitas</a></li>
-                    <li><a href="/criar" class="text-white-50 text-decoration-none mb-2 d-inline-block">Criar Receita</a></li>
-                    <li><a href="/profile" class="text-white-50 text-decoration-none mb-2 d-inline-block">Meu Perfil</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h4>Categorias Populares</h4>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="#" class="badge bg-primary text-decoration-none">Entradas</a>
-                    <a href="#" class="badge bg-primary text-decoration-none">Pratos Principais</a>
-                    <a href="#" class="badge bg-primary text-decoration-none">Sobremesas</a>
-                    <a href="#" class="badge bg-primary text-decoration-none">Receitas Rápidas</a>
-                    <a href="#" class="badge bg-primary text-decoration-none">Vegetarianas</a>
-                    <a href="#" class="badge bg-primary text-decoration-none">Sem Glúten</a>
-                </div>
+        <div class="container mt-4 text-center copyright">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">QuickBites</strong> <span>All Rights
+                    Reserved</span></p>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you've purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
-    </div>
 
-    <div class="container mt-4 text-center copyright">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">QuickBites</strong> <span>{{ date('Y') }} - Todos os direitos reservados</span></p>
-        <div class="credits">
-            <div class="d-flex justify-content-center align-items-center">
-                <span>Feito com</span>
-                <i class="bi bi-heart-fill text-danger mx-1"></i>
-                <span>pela equipe QuickBites</span>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 </div>
 
 <!-- Animated Scroll Top Button -->

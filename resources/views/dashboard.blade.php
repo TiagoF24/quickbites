@@ -6,7 +6,7 @@
             </h1>
             <a href="/"
                 class="flex items-center px-4 py-2 text-sm font-medium text-white transition-colors bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                <i class="bi bi-house-door me-2"></i>Voltar para Home
+                <i class="bi bi-house-door me-2"></i>Voltar
             </a>
         </div>
     </x-slot>

@@ -46,6 +46,21 @@
   ======================================================== -->
 </head>
 <style>
+     :root {
+            --primary-color: #ff6b00;
+            --primary-dark: #e05a00;
+            --primary-light: #ff8c3f;
+            --secondary-color: #ffc107;
+            --accent-color: #ff4500;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+        
     body {
         margin: 0;
         padding: 0;
@@ -141,6 +156,75 @@
         background: rgba(255, 255, 255, 0.4);
         transform: scale(1.05);
     }
+
+    /* Footer Styling */
+    .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 3rem 0 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+
+        .footer h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+            color: white; /* Garantindo que os títulos do footer sejam brancos */
+        }
+
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .footer p, .footer span, .footer a {
+            color: var(--light-text); /* Garantindo que todo texto no footer seja branco */
+        }
+
+        .footer .icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .footer .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
 </style>
 
 
@@ -169,30 +253,11 @@
                         {{-- <li><a href="#events">Events</a></li> --}}
                         {{-- <li><a href="#chefs">Chefs</a></li> --}}
                         {{-- <li><a href="#gallery">Gallery</a></li> --}}
-                        <li class="dropdown"><a href="/receitas"><span>Receitas</span> <i
-                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                            <ul>
-                                <li><a href="#">🥗 Entradas</a></li>
-                                {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                                            class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Dropdown 1</a></li>
-                                        <li><a href="#">Deep Dropdown 2</a></li>
-                                        <li><a href="#">Deep Dropdown 3</a></li>
-                                        <li><a href="#">Deep Dropdown 4</a></li>
-                                        <li><a href="#">Deep Dropdown 5</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li><a href="#">🍴 Pratos Principais</a></li>
-                                <li><a href="#">🍰 Sobremesas</a></li>
-                                <li><a href="#">⏳ Receitas Rápidas</a></li>
-                                <li><a href="#">🍝 Receitas Tradicionais</a></li>
-                                <li><a href="#">🍭 Receitas para Crianças</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/receitas"><i class="bi bi-search"></i> <span> Pesquisar</span></i></a>
+
                         @guest
                             <li><a href="/login">Entrar</a></li>
-                            <li><a href="/register">Registrar</a></li>
+                            <li><a href="/register">Registar</a></li>
                         @endguest
 
                         @auth
@@ -214,21 +279,7 @@
                                 }
 
 
-                                .btnFav {
-                                    background-color:rgb(255, 0, 0) !important;
-                                    color: white !important;
-                                    padding: 8px 16px !important;
-                                    border-radius: 4px !important;
-                                    display: inline-flex !important;
-                                    align-items: center !important;
-                                    gap: 6px !important;
-                                    text-decoration: none;
-                                }
-
-                                .btnFav:hover {
-                                    background-color: rgb(255, 106, 106) !important;
-                                    /* Cor mais escura ao passar o mouse */
-                                }
+                              
                             </style>
                             <li>
                                 <a href="/criar" class="btnCriar">
@@ -236,11 +287,6 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="{{ route('favorites.index') }}" class="btnFav">
-                                    <i class="bi bi-heart-fill" ></i> Meus Favoritos
-                                </a>
-                            </li>
 
                             <!-- Settings Dropdown -->
                             <li class="dropdown">

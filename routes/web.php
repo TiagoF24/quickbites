@@ -28,6 +28,10 @@ Route::get('/receitas/create', [ReceitaController::class, 'create'])->name('rece
 Route::get('/receitas/{id}', [ReceitaController::class, 'show'])->name('receitas.show');
 Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas.index');
 Route::post('/receitas', [ReceitaController::class, 'store'])->name('receita.store');
+Route::get('/receitas/{receita}/edit', [App\Http\Controllers\ReceitaController::class, 'edit'])->name('receitas.edit');
+Route::put('/receitas/{receita}', [App\Http\Controllers\ReceitaController::class, 'update'])->name('receitas.update');
+Route::resource('receitas', App\Http\Controllers\ReceitaController::class);
+
 
 Route::delete('/receitas/{receita}/ratings/{rating}', [App\Http\Controllers\ReceitaController::class, 'deleteRating'])
     ->name('receitas.delete-rating')
