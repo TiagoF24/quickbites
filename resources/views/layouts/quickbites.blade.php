@@ -237,7 +237,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('favorites.index') }}" class="btnFav"> 
+                                <a href="{{ route('favorites.index') }}" class="btnFav">
                                     <i class="bi bi-heart-fill" ></i> Meus Favoritos
                                 </a>
                             </li>
@@ -277,6 +277,8 @@
 
         </div>
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
     </header>
 
     <main class="main">
