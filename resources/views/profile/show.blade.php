@@ -158,10 +158,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ $receita->receita_descricao }}</p>
-                                                
-                                                <!-- Avaliação e ações -->
-                                                <div class="flex items-center justify-between">
+                                                <p class="text-gray-600 text-sm mb-4">{{ $receita->receita_descricao }}</p>                                                <div class="flex items-center justify-between">
                                                     <div class="flex items-center">
                                                         <div class="flex text-yellow-400 mr-1">
                                                             @for ($i = 1; $i <= 5; $i++)

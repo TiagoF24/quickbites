@@ -1,16 +1,16 @@
 <?php
 // Ligação à base de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "quickbites";
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'quickbites';
 
 // Criar ligação
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar ligação
 if ($conn->connect_error) {
-    die("Falha na ligação: " . $conn->connect_error);
+    die('Falha na ligação: ' . $conn->connect_error);
 }
 
 // Obter as receitas mais recentes
@@ -23,8 +23,8 @@ $result = $conn->query($query);
 ?>
 
 <x-quickbites-layout>
- <!-- Hero Section -->
-       <section id="hero" class="hero section dark-background">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-item active">
                 <img src="{{ asset('template/img/hero-carousel/hero-carousel-1.jpg') }}" alt="">
@@ -32,9 +32,6 @@ $result = $conn->query($query);
                     <h2>Receitas <span>Populares</span></h2>
                     <p>Explore as receitas mais amadas que vão transformar as suas refeições! Desde pratos tradicionais
                         a novas delícias, descubra sabores que encantam a todos.</p>
-                    <div>
-                        <a href="#menu" class="btn-get-started">Ver Receitas Populares</a>
-                    </div>
                 </div>
             </div><!-- End Carousel Item -->
 
@@ -42,12 +39,9 @@ $result = $conn->query($query);
                 <img src="{{ asset('template/img/hero-carousel/hero-carousel-2.jpg') }}" alt="">
                 <div class="carousel-container">
                     <h2>Receitas para <span>Crianças</span></h2>
-                    <p>Descobre receitas divertidas e saudáveis que vão encantar os mais pequenos! Com ingredientes
+                    <p>Descubra receitas divertidas e saudáveis que vão encantar os mais pequenos! Com ingredientes
                         simples e preparações fáceis, estas delícias são perfeitas para envolver as crianças na cozinha
-                        e transformar as refeições em momentos de alegria e criatividade</p>
-                    <div>
-                        <a href="#menu" class="btn-get-started">Ver Receitas para Crianças</a>
-                    </div>
+                        e transformar as refeições em momentos de alegria e criatividade.</p>
                 </div>
             </div><!-- End Carousel Item -->
 
@@ -57,9 +51,6 @@ $result = $conn->query($query);
                     <h2>Receitas <span>Vegetarianas</span></h2>
                     <p>Descubra receitas vegetarianas saborosas e saudáveis, perfeitas para uma alimentação criativa e
                         sustentável. Inspire-se e surpreenda seu paladar!</p>
-                    <div>
-                        <a href="#menu" class="btn-get-started">Ver Receitas Vegetarianas</a>
-                    </div>
                 </div>
             </div><!-- End Carousel Item -->
 
@@ -80,37 +71,40 @@ $result = $conn->query($query);
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="bi bi-journal-richtext text-white fs-1"></i>
                     </div>
                     <h3 class="fs-4 fw-bold">
                         <?php
-                            $recipeCount = $conn->query("SELECT COUNT(*) as count FROM receitas")->fetch_assoc()['count'];
-                            echo $recipeCount;
+                        $recipeCount = $conn->query('SELECT COUNT(*) as count FROM receitas')->fetch_assoc()['count'];
+                        echo $recipeCount;
                         ?>
                     </h3>
                     <p class="text-muted">Receitas Disponíveis</p>
                 </div>
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="bi bi-people-fill text-white fs-1"></i>
                     </div>
                     <h3 class="fs-4 fw-bold">
                         <?php
-                            $userCount = $conn->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'];
-                            echo $userCount;
+                        $userCount = $conn->query('SELECT COUNT(*) as count FROM users')->fetch_assoc()['count'];
+                        echo $userCount;
                         ?>
                     </h3>
                     <p class="text-muted">Membros da Comunidade</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="rounded-circle bg-warning d-inline-flex justify-content-center align-items-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="bi bi-star-fill text-white fs-1"></i>
                     </div>
                     <h3 class="fs-4 fw-bold">
                         <?php
-                            $ratingCount = $conn->query("SELECT COUNT(*) as count FROM ratings")->fetch_assoc()['count'];
-                            echo $ratingCount;
+                        $ratingCount = $conn->query('SELECT COUNT(*) as count FROM ratings')->fetch_assoc()['count'];
+                        echo $ratingCount;
                         ?>
                     </h3>
                     <p class="text-muted">Avaliações de Receitas</p>
@@ -134,71 +128,69 @@ $result = $conn->query($query);
         <div class="container">
             <div class="row g-4">
                 <?php if ($result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card shadow h-100 recipe-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('storage/' . $row['receita_foto']) }}" 
-                                         class="card-img-top" 
-                                         alt="<?php echo htmlspecialchars($row['receita_titulo']); ?>"
-                                         style="height: 200px; object-fit: cover;">
-                                    <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-warning">
-                                            <i class="bi bi-alarm-fill"></i> <?php echo $row['receita_duracao']; ?> min
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span class="badge bg-light text-dark">
-                                            <i class="bi bi-bookmark-fill"></i> <?php echo htmlspecialchars($row['categoria']); ?>
-                                        </span>
-                                        <small class="text-muted">
-                                            <i class="bi bi-person-fill"></i> <?php echo htmlspecialchars($row['author_name'] ?? 'Autor não disponível'); ?>
-                                        </small>
-                                    </div>
-                                    <h5 class="card-title fw-bold"><?php echo htmlspecialchars($row['receita_titulo']); ?></h5>
-                                    <p class="card-text flex-grow-1"><?php echo htmlspecialchars(substr($row['receita_descricao'], 0, 100)) . '...'; ?></p>
-                                    
-                                    <?php
-                                    // Obter classificação média
-                                    $recipeId = $row['id'];
-                                    $ratingQuery = "SELECT AVG(rating) as avg_rating, COUNT(*) as count FROM ratings WHERE receita_id = $recipeId";
-                                    $ratingResult = $conn->query($ratingQuery);
-                                    $ratingData = $ratingResult->fetch_assoc();
-                                    $avgRating = round($ratingData['avg_rating'] ?? 0);
-                                    $ratingCount = $ratingData['count'] ?? 0;
-                                    ?>
-                                    
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="me-2">
-                                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                                <?php if ($i <= $avgRating): ?>
-                                                    <i class="bi bi-star-fill text-warning"></i>
-                                                <?php else: ?>
-                                                    <i class="bi bi-star text-warning"></i>
-                                                <?php endif; ?>
-                                            <?php endfor; ?>
-                                        </div>
-                                        <small class="text-muted">(<?php echo $ratingCount; ?>)</small>
-                                    </div>
-                                    
-                                    <a href="{{ route('receitas.show', $row['id']) }}" class="btn btn-warning w-100 mt-auto">
-                                        Ver Receita <i class="bi bi-arrow-right-short"></i>
-                                    </a>
-                                </div>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow h-100 recipe-card">
+                        <div class="position-relative">
+                            <img src="{{ asset('storage/' . $row['receita_foto']) }}" class="card-img-top"
+                                alt="<?php echo htmlspecialchars($row['receita_titulo']); ?>" style="height: 200px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-warning">
+                                    <i class="bi bi-alarm-fill"></i> <?php echo $row['receita_duracao']; ?> min
+                                </span>
                             </div>
                         </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <div class="col-12">
-                        <div class="alert alert-info text-center">
-                            <i class="bi bi-info-circle me-2"></i> Nenhuma receita encontrada.
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-bookmark-fill"></i> <?php echo htmlspecialchars($row['categoria']); ?>
+                                </span>
+                                <small class="text-muted">
+                                    <i class="bi bi-person-fill"></i> <?php echo htmlspecialchars($row['author_name'] ?? 'Autor não disponível'); ?>
+                                </small>
+                            </div>
+                            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($row['receita_titulo']); ?></h5>
+                            <p class="card-text flex-grow-1"><?php echo htmlspecialchars(substr($row['receita_descricao'], 0, 100)) . '...'; ?></p>
+
+                            <?php
+                            // Obter classificação média
+                            $recipeId = $row['id'];
+                            $ratingQuery = "SELECT AVG(rating) as avg_rating, COUNT(*) as count FROM ratings WHERE receita_id = $recipeId";
+                            $ratingResult = $conn->query($ratingQuery);
+                            $ratingData = $ratingResult->fetch_assoc();
+                            $avgRating = round($ratingData['avg_rating'] ?? 0);
+                            $ratingCount = $ratingData['count'] ?? 0;
+                            ?>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-2">
+                                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                                    <?php if ($i <= $avgRating): ?>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <?php else: ?>
+                                    <i class="bi bi-star text-warning"></i>
+                                    <?php endif; ?>
+                                    <?php endfor; ?>
+                                </div>
+                                <small class="text-muted">(<?php echo $ratingCount; ?>)</small>
+                            </div>
+
+                            <a href="{{ route('receitas.show', $row['id']) }}" class="btn btn-warning w-100 mt-auto">
+                                Ver Receita <i class="bi bi-arrow-right-short"></i>
+                            </a>
                         </div>
                     </div>
+                </div>
+                <?php endwhile; ?>
+                <?php else: ?>
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        <i class="bi bi-info-circle me-2"></i> Nenhuma receita encontrada.
+                    </div>
+                </div>
                 <?php endif; ?>
             </div>
-            
+
             <div class="text-center mt-5">
                 <a href="{{ route('receitas.index') }}" class="btn btn-outline-warning btn-lg">
                     Ver Todas as Receitas <i class="bi bi-arrow-right"></i>
@@ -208,16 +200,16 @@ $result = $conn->query($query);
     </section>
 
     <!-- Secção de Categorias -->
-  
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Categorias Populares</h2>
-            <p class="lead text-muted">Explore as nossas receitas por categoria</p>
-        </div>
-        
-        <div class="row g-4 justify-content-center">
-            <?php
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Categorias Populares</h2>
+                <p class="lead text-muted">Explore as nossas receitas por categoria</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <?php
             // Obter categorias com contagem
             $categoryQuery = "SELECT categoria, COUNT(*) as count FROM receitas GROUP BY categoria ORDER BY count DESC LIMIT 6";
             $categoryResult = $conn->query($categoryQuery);
@@ -242,34 +234,34 @@ $result = $conn->query($query);
                     $recipeCount = $category['count'];
                     $icon = isset($icons[$categoryName]) ? $icons[$categoryName] : 'bi-tag';
             ?>
-            <div class="col-md-4 col-lg-2">
-                <a href="/receitas?categoria=<?php echo urlencode($categoryName); ?>" class="text-decoration-none">
-                    <div class="card h-100 text-center category-card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="icon-box mb-3">
-                                <i class="bi <?php echo $icon; ?> fs-1 text-warning"></i>
+                <div class="col-md-4 col-lg-2">
+                    <a href="/receitas?categoria=<?php echo urlencode($categoryName); ?>" class="text-decoration-none">
+                        <div class="card h-100 text-center category-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="icon-box mb-3">
+                                    <i class="bi <?php echo $icon; ?> fs-1 text-warning"></i>
+                                </div>
+                                <h5 class="card-title"><?php echo htmlspecialchars($categoryName); ?></h5>
+                                <p class="card-text text-muted"><?php echo $recipeCount; ?> receitas</p>
                             </div>
-                            <h5 class="card-title"><?php echo htmlspecialchars($categoryName); ?></h5>
-                            <p class="card-text text-muted"><?php echo $recipeCount; ?> receitas</p>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <?php
+                    </a>
+                </div>
+                <?php
                 }
             } else {
                 // Se não forem encontradas categorias ou a consulta falhar
                 echo '<div class="col-12 text-center"><p class="text-muted">Nenhuma categoria encontrada.</p></div>';
             }
             ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Secção de Chamada à Ação -->
     <section class="py-5 bg-warning text-white text-center">
-    <div class="container">
+        <div class="container">
             <h2 class="display-5 fw-bold mb-4">Tem uma receita para partilhar?</h2>
             <p class="lead mb-4">Junte-se à nossa comunidade e partilhe as suas receitas favoritas com o mundo!</p>
             <div class="d-flex justify-content-center gap-3">
@@ -296,23 +288,67 @@ $result = $conn->query($query);
         /* Melhorias na Secção Hero */
         .hero {
             position: relative;
-            overflow: hidden;
         }
-        
+
+        /* Substituir as propriedades existentes do carousel-container */
+        .hero .carousel-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 100%;
+            max-width: 1200px;
+            /* aumentado de 800px para 1200px */
+            padding: 0 20px;
+            overflow: visible;
+            /* permite que o texto seja totalmente visível */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            white-space: normal;
+            /* permite quebra de linha */
+            overflow: visible;
+            /* remove qualquer corte de texto */
+            text-overflow: clip;
+            /* remove as reticências */
+            display: block;
+            /* garante que o texto seja exibido em bloco */
+        }
+
+        /* Ajuste responsivo */
+        @media (max-width: 768px) {
+            .hero .carousel-container {
+                width: 90%;
+                padding: 0 15px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+        }
+
         .hero .carousel-item {
-            height: 80vh;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+            min-height: 100vh;
+            /* ocupa a tela toda */
+            height: auto;
+            padding: 5rem 0;
+            /* espaço extra para o texto */
         }
-        
+
+
         .hero .carousel-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.7);
         }
-        
+
         .hero .carousel-container {
             position: absolute;
             top: 50%;
@@ -323,20 +359,20 @@ $result = $conn->query($query);
             width: 80%;
             max-width: 800px;
         }
-        
+
         .hero h2 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
-        
+
         .btn-get-started {
             display: inline-block;
             padding: 12px 30px;
@@ -347,36 +383,36 @@ $result = $conn->query($query);
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-get-started:hover {
             background-color: #e0a800;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Cartões de Receitas */
         .recipe-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .recipe-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Cartões de Categorias */
         .category-card {
             transition: transform 0.3s ease;
             border-radius: 10px;
         }
-        
+
         .category-card:hover {
             transform: translateY(-5px);
             background-color: #fff9e6;
         }
-        
+
         .category-card .icon-box {
             width: 70px;
             height: 70px;
@@ -387,7 +423,7 @@ $result = $conn->query($query);
             background-color: #fff9e6;
             border-radius: 50%;
         }
-        
+
         /* Divisor Personalizado */
         .divider-custom {
             width: 100%;
@@ -396,7 +432,7 @@ $result = $conn->query($query);
             align-items: center;
             margin: 1.5rem 0;
         }
-        
+
         .divider-custom-line {
             width: 100%;
             max-width: 7rem;
@@ -405,23 +441,23 @@ $result = $conn->query($query);
             border-radius: 1rem;
             border-color: #ffc107;
         }
-        
+
         .divider-custom-icon {
             font-size: 1.5rem;
             color: #ffc107;
             margin: 0 1rem;
         }
-        
+
         /* Ajustes Responsivos */
         @media (max-width: 768px) {
             .hero h2 {
                 font-size: 2rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .hero .carousel-item {
                 height: 60vh;
             }
@@ -433,4 +469,3 @@ $result = $conn->query($query);
 // Fechar a ligação
 $conn->close();
 ?>
-
