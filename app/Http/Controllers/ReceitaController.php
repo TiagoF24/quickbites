@@ -6,6 +6,9 @@ use App\Models\Receita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
+
 
 class ReceitaController extends Controller
 {
@@ -140,26 +143,26 @@ class ReceitaController extends Controller
         try {
             // Buscar a receita com relacionamentos
             $receita = Receita::with(['ratings', 'autorRelation'])->findOrFail($id);
-            
+
             // Buscar receitas relacionadas (mesma categoria)
             $receitasRelacionadas = Receita::where('categoria', $receita->categoria)
                                           ->where('id', '!=', $receita->id)
                                           ->take(3)
                                           ->get();
-            
+
             // Verificar se o usuário atual já avaliou esta receita
             $userRating = null;
-            if (auth()->check()) {
-                $userRating = $receita->ratings()->where('user_id', auth()->id())->first();
-            }
-            
+            if (Auth::check()) {
+                $userRating = $receita->ratings()->where('user_id', Auth::id())->first();
+                }
+
             return view('receitas.show', compact('receita', 'receitasRelacionadas', 'userRating'));
         } catch (\Exception $e) {
-            \Log::error('Erro ao mostrar receita: ' . $e->getMessage());
+            Log::error('Erro ao mostrar receita: ' . $e->getMessage());
             return redirect()->route('receitas.index')->with('error', 'Receita não encontrada.');
         }
     }
-    
+
 
     public function userFavorites($userId)
     {
@@ -176,25 +179,26 @@ class ReceitaController extends Controller
  * @param \App\Models\Receita $receita
  * @param int $rating
  * @return \Illuminate\Http\Response
+ * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
  */
 public function deleteRating(Receita $receita, $rating)
 {
     // Encontrar a avaliação
     $ratingModel = \App\Models\Rating::findOrFail($rating);
-    
+
     // Verificar se o usuário atual é o dono da avaliação
-    if ($ratingModel->user_id !== auth()->id()) {
+    if ($ratingModel->user_id !== Auth::id()) {
         return redirect()->back()->with('error', 'Você não tem permissão para excluir esta avaliação.');
     }
-    
+
     // Verificar se a avaliação pertence à receita especificada
     if ($ratingModel->receita_id !== $receita->id) {
         return redirect()->back()->with('error', 'Avaliação não encontrada para esta receita.');
     }
-    
+
     // Excluir a avaliação
     $ratingModel->delete();
-    
+
     return redirect()->back()->with('success', 'Avaliação excluída com sucesso.');
 }
 
