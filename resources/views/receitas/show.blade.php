@@ -358,7 +358,7 @@
                     <div class="card-header bg-white border-0 pt-4">
                         <h4 class="mb-0 fw-bold">
                             <i class="bi bi-star-half text-warning me-2"></i>
-                            Avaliações dos Usuários
+                            Avaliações dos Utilizadors
                         </h4>
                     </div>
                     <div class="card-body">
@@ -400,7 +400,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Botão de exclusão para o próprio usuário -->
+                                    <!-- Botão de exclusão para o próprio utilizador -->
                                     @if(auth()->check() && auth()->id() == $rating->user_id)
                                     <div>
                                         <form

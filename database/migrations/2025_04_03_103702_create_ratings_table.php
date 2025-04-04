@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('comment')->nullable();
             $table->timestamps();
 
-            // Garantir que um usuário só possa avaliar uma receita uma vez
+            // Garantir que um utilizador só possa avaliar uma receita uma vez
             $table->unique(['user_id', 'receita_id']);
         });
     }

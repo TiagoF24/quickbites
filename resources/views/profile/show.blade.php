@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <!-- Perfil do Usuário -->
+                    <!-- Perfil do Utilizador -->
                     <div class="border-b border-gray-200 pb-6 mb-6">
                         <div class="flex items-center space-x-4">
                             <!-- Avatar - Ensuring it's perfectly round -->
@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <!-- Receitas do Usuário -->
+                    <!-- Receitas do Utilizador -->
                     <div>
                         <h3 class="text-lg font-bold text-orange-600 mb-4">Receitas de {{ $user->name }}</h3>
                         
@@ -63,7 +63,7 @@
                             </div>
                         @else
                             <div class="bg-gray-100 rounded-lg p-6 text-center">
-                                <p class="text-gray-600">Este usuário ainda não publicou nenhuma receita.</p>
+                                <p class="text-gray-600">Este utilizador ainda não publicou nenhuma receita.</p>
                             </div>
                         @endif
                     </div>

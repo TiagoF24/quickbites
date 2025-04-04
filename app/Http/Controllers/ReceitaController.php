@@ -147,7 +147,7 @@ class ReceitaController extends Controller
                                           ->take(3)
                                           ->get();
             
-            // Verificar se o usuário atual já avaliou esta receita
+            // Verificar se o utilizador atual já avaliou esta receita
             $userRating = null;
             if (auth()->check()) {
                 $userRating = $receita->ratings()->where('user_id', auth()->id())->first();
@@ -182,7 +182,7 @@ public function deleteRating(Receita $receita, $rating)
     // Encontrar a avaliação
     $ratingModel = \App\Models\Rating::findOrFail($rating);
     
-    // Verificar se o usuário atual é o dono da avaliação
+    // Verificar se o utilizador atual é o dono da avaliação
     if ($ratingModel->user_id !== auth()->id()) {
         return redirect()->back()->with('error', 'Você não tem permissão para excluir esta avaliação.');
     }

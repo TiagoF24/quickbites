@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Verificando se o usuário está autenticado e se é um administrador
+        // Verificando se o utilizador está autenticado e se é um administrador
         if (Auth::check() && Auth::user()->is_admin) {
             return view('admin.index');
         }

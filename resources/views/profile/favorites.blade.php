@@ -63,7 +63,7 @@
                         </div>
                     @else
                         <div class="p-6 text-center bg-gray-100 rounded-lg">
-                            <p class="text-gray-600">Este usuário ainda não tem receitas favoritas.</p>
+                            <p class="text-gray-600">Este utilizador ainda não tem receitas favoritas.</p>
                         </div>
                     @endif
                 </div>

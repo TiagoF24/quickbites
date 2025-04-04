@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function show($userId)
     {
-        // Buscar o usuário pelo ID passado na URL
+        // Buscar o utilizador pelo ID passado na URL
         $user = User::findOrFail($userId);
         
         return view('profile.show', [
