@@ -139,34 +139,29 @@ class ReceitaController extends Controller
      * @return \Illuminate\View\View
      */
     public function show($id)
-    {
-        try {
-            // Buscar a receita com relacionamentos
-            $receita = Receita::with(['ratings', 'autorRelation'])->findOrFail($id);
+{
+    try {
+        // Buscar a receita com relacionamentos
+        $receita = Receita::with(['ratings', 'autorRelation'])->findOrFail($id);
 
-            // Buscar receitas relacionadas (mesma categoria)
-            $receitasRelacionadas = Receita::where('categoria', $receita->categoria)
-                                          ->where('id', '!=', $receita->id)
-                                          ->take(3)
-                                          ->get();
-<<<<<<< HEAD
-            
-            // Verificar se o utilizador atual já avaliou esta receita
-=======
-
-            // Verificar se o usuário atual já avaliou esta receita
->>>>>>> 5f70dab5f3265dff848d554498377e52c63ef0b5
-            $userRating = null;
-            if (Auth::check()) {
-                $userRating = $receita->ratings()->where('user_id', Auth::id())->first();
-                }
-
-            return view('receitas.show', compact('receita', 'receitasRelacionadas', 'userRating'));
-        } catch (\Exception $e) {
-            Log::error('Erro ao mostrar receita: ' . $e->getMessage());
-            return redirect()->route('receitas.index')->with('error', 'Receita não encontrada.');
+        // Buscar receitas relacionadas (mesma categoria)
+        $receitasRelacionadas = Receita::where('categoria', $receita->categoria)
+                                      ->where('id', '!=', $receita->id)
+                                      ->take(3)
+                                      ->get();
+        
+        // Verificar se o usuário atual já avaliou esta receita
+        $userRating = null;
+        if (Auth::check()) {
+            $userRating = $receita->ratings()->where('user_id', Auth::id())->first();
         }
+
+        return view('receitas.show', compact('receita', 'receitasRelacionadas', 'userRating'));
+    } catch (\Exception $e) {
+        Log::error('Erro ao mostrar receita: ' . $e->getMessage());
+        return redirect()->route('receitas.index')->with('error', 'Receita não encontrada.');
     }
+}
 
 
     public function userFavorites($userId)
@@ -190,15 +185,9 @@ public function deleteRating(Receita $receita, $rating)
 {
     // Encontrar a avaliação
     $ratingModel = \App\Models\Rating::findOrFail($rating);
-<<<<<<< HEAD
     
-    // Verificar se o utilizador atual é o dono da avaliação
-    if ($ratingModel->user_id !== auth()->id()) {
-=======
-
     // Verificar se o usuário atual é o dono da avaliação
     if ($ratingModel->user_id !== Auth::id()) {
->>>>>>> 5f70dab5f3265dff848d554498377e52c63ef0b5
         return redirect()->back()->with('error', 'Você não tem permissão para excluir esta avaliação.');
     }
 
@@ -212,5 +201,6 @@ public function deleteRating(Receita $receita, $rating)
 
     return redirect()->back()->with('success', 'Avaliação excluída com sucesso.');
 }
+
 
 }
