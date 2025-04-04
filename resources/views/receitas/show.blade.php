@@ -283,25 +283,26 @@
                             </div>
                         </div>
                         <!-- Modo de Preparo -->
-                        <div class="tab-pane fade" id="preparo-tab-pane" role="tabpanel" aria-labelledby="preparo-tab"
-                            tabindex="0">
-                            <div class="row">
-                                <div class="col-md-10 mx-auto">
-                                    <ol class="list-group list-group-numbered">
-                                        @foreach (explode("\n", $receita->modo_preparo) as $index => $passo)
-                                        @if (trim($passo))
-                                        <li class="list-group-item d-flex py-3 border-0 border-bottom">
-                                            <div>
-                                                <h6 class="fw-bold mb-2">Passo {{ $index + 1 }}</h6>
-                                                <p class="mb-0">{{ trim($passo) }}</p>
-                                            </div>
-                                        </li>
-                                        @endif
-                                        @endforeach
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
+<div class="tab-pane fade" id="preparo-tab-pane" role="tabpanel" aria-labelledby="preparo-tab"
+    tabindex="0">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <ol class="list-group list-group-numbered">
+                @foreach (explode("\n", $receita->modo_preparo) as $index => $passo)
+                @if (trim($passo))
+                <li class="list-group-item d-flex py-3 border-0 border-bottom">
+                    <div class="w-100">
+                        <h6 class="fw-bold mb-2">Passo {{ $index + 1 }}</h6>
+                        <p class="mb-0" style="word-wrap: break-word; overflow-wrap: break-word;">{{ trim($passo) }}</p>
+                    </div>
+                </li>
+                @endif
+                @endforeach
+            </ol>
+        </div>
+    </div>
+</div>
+
 
                         <!-- Dicas -->
                         @if ($receita->dicas)
