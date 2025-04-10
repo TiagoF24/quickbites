@@ -170,7 +170,7 @@ class ReceitaController extends Controller
         // Verificar se o usuário atual é o autor da receita
         if (Auth::id() != $receita->autor_id) {
             return redirect()->route('receitas.show', $receita->id)
-                ->with('error', 'Você não tem permissão para editar esta receita.');
+                ->with('error', 'Tu não tens permissão para editar esta receita.');
         }
 
         return view('receitas.edit', compact('receita'));
@@ -181,7 +181,7 @@ class ReceitaController extends Controller
         // Verificar se o usuário atual é o autor da receita
         if (Auth::id() != $receita->autor_id) {
             return redirect()->route('receitas.show', $receita->id)
-                ->with('error', 'Você não tem permissão para editar esta receita.');
+                ->with('error', 'Tu não tens permissão para editar esta receita.');
         }
 
         // Validar os dados do formulário
@@ -243,7 +243,7 @@ class ReceitaController extends Controller
         // Check if the current user is the author of the recipe
         if (Auth::id() != $receita->autor_id) {
             return redirect()->route('receitas.show', $receita->id)
-                ->with('error', 'Você não tem permissão para excluir esta receita.');
+                ->with('error', 'Tu não tens permissão para excluir esta receita.');
         }
 
         // Delete the associated image
@@ -278,7 +278,7 @@ class ReceitaController extends Controller
 
         // Verificar se o usuário atual é o dono da avaliação
         if ($ratingModel->user_id !== Auth::id()) {
-            return redirect()->back()->with('error', 'Você não tem permissão para excluir esta avaliação.');
+            return redirect()->back()->with('error', 'Tu não tens permissão para excluir esta avaliação.');
         }
 
         // Verificar se a avaliação pertence à receita especificada

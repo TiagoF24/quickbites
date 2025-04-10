@@ -355,7 +355,7 @@
                                     <div>
                                         <div class="flex items-center justify-between">
                                             <label for="modo_preparo" class="block text-sm font-medium text-gray-700">
-                                                Modo de Preparo <span class="text-red-500">*</span>
+                                                Modo de Preparação <span class="text-red-500">*</span>
                                             </label>
                                             <button type="button" id="format-steps-btn" class="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors">
                                                 <i class="bi bi-list-ol mr-1"></i> Formatar Passos
@@ -474,7 +474,7 @@
                                         </div>
                                         
                                         <div class="mb-4">
-                                            <h4 class="text-sm font-medium text-gray-500 mb-1">Modo de Preparo</h4>
+                                            <h4 class="text-sm font-medium text-gray-500 mb-1">Modo de Preparação</h4>
                                             <ol class="list-decimal pl-5 space-y-2 text-sm text-gray-700" id="preview-steps">
                                                 <!-- Passos serão inseridos aqui -->
                                             </ol>

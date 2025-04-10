@@ -249,7 +249,7 @@
                             <button class="nav-link fw-bold" id="preparo-tab" data-bs-toggle="tab"
                                 data-bs-target="#preparo-tab-pane" type="button" role="tab"
                                 aria-controls="preparo-tab-pane" aria-selected="false">
-                                <i class="bi bi-list-ol"></i> Modo de Preparo
+                                <i class="bi bi-list-ol"></i> Modo de Preparação
                             </button>
                         </li>
                         @if ($receita->dicas)
@@ -282,7 +282,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Modo de Preparo -->
+                        <!-- Modo de Preparação -->
                         <div class="tab-pane fade" id="preparo-tab-pane" role="tabpanel"
                             aria-labelledby="preparo-tab" tabindex="0">
                             <div class="row">

@@ -72,7 +72,7 @@
                 <!-- Instructions -->
                 <div class="col-md-8">
                     <div class="instructions-section">
-                        <h3><i class="bi bi-list-ol"></i> Modo de Preparo</h3>
+                        <h3><i class="bi bi-list-ol"></i> Modo de Preparação</h3>
                         <ol class="instructions-list">
                             @foreach (explode("\n", $receita->modo_preparo) as $passo)
                                 @if (trim($passo))

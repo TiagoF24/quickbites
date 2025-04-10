@@ -298,11 +298,11 @@
                                 </div>
                             </div>
 
-                            <!-- Seção 3: Ingredientes e Modo de Preparo -->
+                            <!-- Seção 3: Ingredientes e Modo de Preparação -->
                             <div class="pb-12 border-b border-gray-900/10 hidden" id="section3">
                                 <h2 class="text-xl font-bold text-orange-600 flex items-center">
                                     <span class="inline-flex items-center justify-center w-8 h-8 mr-2 text-white bg-orange-600 rounded-full flex-shrink-0">3</span>
-                                    Ingredientes e Modo de Preparo
+                                    Ingredientes e Modo de Preparação
                                 </h2>
                                 <p class="mt-1 text-sm text-gray-600">Detalhe os ingredientes e o passo a passo da sua receita.</p>
 
@@ -384,7 +384,7 @@
 
                                     <div>
                                         <label for="modo_preparo" class="block text-sm font-medium text-gray-900">
-                                            Modo de Preparo <span class="text-red-500">*</span>
+                                            Modo de Preparação <span class="text-red-500">*</span>
                                         </label>
                                         <p class="mt-1 text-sm text-gray-500">Descreva cada passo do preparo, um por linha.</p>
                                         
@@ -481,7 +481,7 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- Ingredientes e Modo de Preparo -->
+                                        <!-- Ingredientes e Modo de Preparação -->
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-md font-medium text-gray-900 mb-2">Ingredientes</h4>
@@ -491,7 +491,7 @@
                                             </div>
                                             
                                             <div>
-                                                <h4 class="text-md font-medium text-gray-900 mb-2">Modo de Preparo</h4>
+                                                <h4 class="text-md font-medium text-gray-900 mb-2">Modo de Preparação</h4>
                                                 <ol class="list-decimal pl-5 space-y-2 text-sm text-gray-700" id="preview-steps">
                                                     <!-- Passos serão inseridos aqui -->
                                                 </ol>

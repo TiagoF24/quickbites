@@ -230,7 +230,7 @@
                             <i class="bi bi-heart text-3xl"></i>
                         </div>
                         <h4 class="text-lg font-medium text-gray-900 mb-2">Nenhuma receita favorita</h4>
-                        <p class="text-gray-600 mb-4">Você ainda não adicionou nenhuma receita aos seus favoritos.</p>
+                        <p class="text-gray-600 mb-4">Tu ainda não adicionaste nenhuma receita aos seus favoritos.</p>
 
     <a href="{{ route('receitas.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-500 transition-colors">
                             <i class="bi bi-search mr-2"></i> Explorar Receitas
@@ -340,7 +340,7 @@
                             <i class="bi bi-journal-plus text-3xl"></i>
                         </div>
                         <h4 class="text-lg font-medium text-gray-900 mb-2">Nenhuma receita publicada</h4>
-                        <p class="text-gray-600 mb-4">Você ainda não publicou nenhuma receita no QuickBites.</p>
+                        <p class="text-gray-600 mb-4">Tu ainda não publicaste nenhuma receita no QuickBites.</p>
                         <a href="{{ route('receitas.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-500 transition-colors">
                             <i class="bi bi-plus-lg mr-2"></i> Criar Nova Receita
                         </a>

@@ -189,9 +189,9 @@
                         <div class="mb-4">
                             <i class="bi bi-heart text-danger" style="font-size: 5rem;"></i>
                         </div>
-                        <h2 class="mb-3">Você ainda não tem receitas favoritas</h2>
+                        <h2 class="mb-3">Tu ainda não tens receitas favoritas</h2>
                         <p class="text-muted mb-4">
-                            Explore nossa coleção de receitas e salve suas favoritas para acessá-las facilmente depois.
+                            Explora nossa coleção de receitas e salva as tuas favoritas para acessá-las facilmente depois.
                         </p>
                         <a href="{{ route('receitas.index') }}" class="btn btn-primary btn-lg px-4">
                             <i class="bi bi-search me-2"></i>Explorar Receitas
