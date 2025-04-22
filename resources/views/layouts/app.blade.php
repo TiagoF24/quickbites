@@ -16,7 +16,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Satisfy&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Satisfy&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
@@ -33,351 +35,385 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        :root {
-            --primary-color: #ff6b00;
-            --primary-dark: #e05a00;
-            --primary-light: #ff8c3f;
-            --secondary-color: #ffc107;
-            --accent-color: #ff4500;
-            --text-color: #333333;
-            --light-text: #ffffff;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
+    :root {
+        --primary-color: #ff6b00;
+        --primary-dark: #e05a00;
+        --primary-light: #ff8c3f;
+        --secondary-color: #ffc107;
+        --accent-color: #ff4500;
+        --text-color: #333333;
+        --light-text: #ffffff;
+        --dark-bg: #1a1a1a;
+        --light-bg: #f8f9fa;
+        --border-radius: 12px;
+        --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s ease;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        background-color: var(--light-bg);
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-color);
+    }
+
+    /* Header Styling with Texture and Glass Effect */
+    .header {
+        background: url("{{ asset('template/img/navbar-texture.png') }}"),
+        linear-gradient(135deg, rgba(255, 107, 0, 0.9), rgba(255, 159, 0, 0.85));
+        background-size: cover;
+        background-position: center;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 15px 0;
+        transition: var(--transition);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo img {
+        max-height: 50px;
+        transition: var(--transition);
+    }
+
+    .sitename {
+        font-family: 'Satisfy', cursive;
+        font-size: 2.2rem;
+        margin-left: 10px;
+        color: var(--light-text);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Navigation text color */
+    .header a,
+    .header .nav-link {
+        color: var(--light-text) !important;
+    }
+
+    /* Main Content Styling */
+    .main-content {
+        background: linear-gradient(135deg, #fff8f0, #fff);
+        min-height: calc(100vh - 80px);
+        padding: 3rem 0;
+        position: relative;
+    }
+
+    .main-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("{{ asset('template/img/pattern-light.png') }}");
+        background-size: 200px;
+        opacity: 0.05;
+        pointer-events: none;
+    }
+
+    /* Content Container with Elegant Styling */
+    .content-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+        margin-bottom: 2rem;
+        transition: var(--transition);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    .content-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Page Header with Gradient */
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: white;
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    /* Add this to the <style> section in the head of the document or to your CSS file */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            background-color: var(--light-bg);
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .bi-arrow-clockwise-animate {
+        animation: spin 1s linear infinite;
+    }
+
+
+    .page-header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url("{{ asset('template/img/pattern-dot.png') }}");
+        background-size: 100px;
+        opacity: 0.1;
+        pointer-events: none;
+    }
+
+    .page-header h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        color: white;
+        /* Garantindo que o texto do cabeçalho seja branco */
+    }
+
+    /* Footer Styling */
+    .footer {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        padding: 3rem 0 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+
+    .footer h4 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+        padding-bottom: 10px;
+        color: white;
+        /* Garantindo que os títulos do footer sejam brancos */
+    }
+
+    .footer h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+    }
+
+    .footer p,
+    .footer span,
+    .footer a {
+        color: var(--light-text);
+        /* Garantindo que todo texto no footer seja branco */
+    }
+
+    .footer .icon {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-right: 15px;
+    }
+
+    .footer .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--light-text);
+        margin-right: 10px;
+        transition: var(--transition);
+    }
+
+    .footer .social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        font-size: 0.9rem;
+        color: var(--light-text);
+        /* Garantindo que o copyright seja branco */
+    }
+
+    /* Scroll Top Button */
+    .scroll-top {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .scroll-top.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .scroll-top:hover {
+        transform: translateY(-5px);
+    }
+
+    .scroll-top i {
+        font-size: 1.5rem;
+        color: white;
+        /* Garantindo que o ícone seja branco */
+    }
+
+    /* Button Styling */
+    .btn-custom {
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: white !important;
+        /* Garantindo que o texto do botão seja branco */
+        border: none;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+    }
+
+    /* Card Styling */
+    .card-custom {
+        border-radius: var(--border-radius);
+        border: none;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-custom .card-header {
+        background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+        color: white;
+        /* Garantindo que o texto do cabeçalho do card seja branco */
+        border: none;
+        padding: 15px 20px;
+    }
+
+    /* Form Controls */
+    .form-control-custom {
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 12px 15px;
+        transition: var(--transition);
+    }
+
+    .form-control-custom:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+    }
+
+    /* Links no footer */
+    .footer a.text-white-50 {
+        color: rgba(255, 255, 255, 0.7) !important;
+        transition: var(--transition);
+    }
+
+    .footer a.text-white-50:hover {
+        color: white !important;
+        text-decoration: underline !important;
+    }
+
+    /* Badges de categorias */
+    .badge.bg-primary {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        transition: var(--transition);
+    }
+
+    .badge.bg-primary:hover {
+        background-color: var(--primary-dark) !important;
+        transform: translateY(-2px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        /* Header Styling with Texture and Glass Effect */
-        .header {
-            background: url("{{ asset('template/img/navbar-texture.png') }}"), linear-gradient(135deg, rgba(255, 107, 0, 0.9), rgba(255, 159, 0, 0.85));
-            background-size: cover;
-            background-position: center;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            padding: 15px 0;
-            transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        .logo img {
-            max-height: 50px;
-            transition: var(--transition);
-        }
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
+    }
 
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
         .sitename {
-            font-family: 'Satisfy', cursive;
-            font-size: 2.2rem;
-            margin-left: 10px;
-            color: var(--light-text);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem;
         }
 
-        /* Navigation text color */
-        .header a, .header .nav-link {
-            color: var(--light-text) !important;
-        }
-
-        /* Main Content Styling */
-        .main-content {
-            background: linear-gradient(135deg, #fff8f0, #fff);
-            min-height: calc(100vh - 80px);
-            padding: 3rem 0;
-            position: relative;
-        }
-
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("{{ asset('template/img/pattern-light.png') }}");
-            background-size: 200px;
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
-        /* Content Container with Elegant Styling */
-        .content-container {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .content-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Page Header with Gradient */
         .page-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-
-        }
-
-        .page-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url("{{ asset('template/img/pattern-dot.png') }}");
-            background-size: 100px;
-            opacity: 0.1;
-            pointer-events: none;
+            padding: 1.5rem;
         }
 
         .page-header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            margin: 0;
-            position: relative;
-            z-index: 2;
-            color: white; /* Garantindo que o texto do cabeçalho seja branco */
-        }
-
-        /* Footer Styling */
-        .footer {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            padding: 3rem 0 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-        }
-
-        .footer h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 10px;
-            color: white; /* Garantindo que os títulos do footer sejam brancos */
-        }
-
-        .footer h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 10px;
-        }
-
-        .footer p, .footer span, .footer a {
-            color: var(--light-text); /* Garantindo que todo texto no footer seja branco */
-        }
-
-        .footer .icon {
-            color: var(--primary-color);
             font-size: 1.5rem;
-            margin-right: 15px;
         }
 
-        .footer .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
-            margin-right: 10px;
-            transition: var(--transition);
+        .main-content {
+            padding: 2rem 0;
         }
-
-        .footer .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            font-size: 0.9rem;
-            color: var(--light-text); /* Garantindo que o copyright seja branco */
-        }
-
-        /* Scroll Top Button */
-        .scroll-top {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .scroll-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-        }
-
-        .scroll-top i {
-            font-size: 1.5rem;
-            color: white; /* Garantindo que o ícone seja branco */
-        }
-
-        /* Button Styling */
-        .btn-custom {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white !important; /* Garantindo que o texto do botão seja branco */
-            border: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-        }
-
-        .btn-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
-        }
-
-        /* Card Styling */
-        .card-custom {
-            border-radius: var(--border-radius);
-            border: none;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-custom:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .card-custom .card-header {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-            color: white; /* Garantindo que o texto do cabeçalho do card seja branco */
-            border: none;
-            padding: 15px 20px;
-        }
-
-        /* Form Controls */
-        .form-control-custom {
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 12px 15px;
-            transition: var(--transition);
-        }
-
-        .form-control-custom:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
-        }
-
-        /* Links no footer */
-        .footer a.text-white-50 {
-            color: rgba(255, 255, 255, 0.7) !important;
-            transition: var(--transition);
-        }
-
-        .footer a.text-white-50:hover {
-            color: white !important;
-            text-decoration: underline !important;
-        }
-
-        /* Badges de categorias */
-        .badge.bg-primary {
-            background-color: var(--primary-color) !important;
-            color: white !important;
-            transition: var(--transition);
-        }
-
-        .badge.bg-primary:hover {
-            background-color: var(--primary-dark) !important;
-            transform: translateY(-2px);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .sitename {
-                font-size: 1.8rem;
-            }
-            
-            .page-header {
-                padding: 1.5rem;
-            }
-            
-            .page-header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .main-content {
-                padding: 2rem 0;
-            }
-        }
+    }
     </style>
 </head>
 
@@ -396,11 +432,11 @@
 
         <!-- Page Heading with Pattern Background -->
         @isset($header)
-            <div class="container mt-4 animate-fade-in">
-                <div class="page-header">
-                    {{ $header }}
-                </div>
+        <div class="container mt-4 animate-fade-in">
+            <div class="page-header">
+                {{ $header }}
             </div>
+        </div>
         @endisset
 
         <!-- Main Content with Subtle Pattern -->
@@ -410,12 +446,12 @@
                     {{ $slot }}
                 </div>
             </div>
-        </div>
     </div>
-</main>
+    </div>
+    </main>
 
-<!-- Enhanced Footer with Gradient Border -->
-<footer id="footer" class="footer dark-background">
+    <!-- Enhanced Footer with Gradient Border -->
+    <footer id="footer" class="footer dark-background">
 
         <div class="container">
             <div class="row gy-3">
@@ -474,97 +510,99 @@
         </div>
 
     </footer>
-</div>
+    </div>
 
-<!-- Animated Scroll Top Button -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-<i class="bi bi-arrow-up-short"></i>
-</a>
+    <!-- Animated Scroll Top Button -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
 
-<!-- Preloader -->
-<div id="preloader" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center;">
-<img src="{{ asset('template/img/logos/logo_login.png') }}" alt="Loading..." width="80" class="animate__animated animate__pulse animate__infinite">
-</div>
+    <!-- Preloader -->
+    <div id="preloader"
+        style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center;">
+        <img src="{{ asset('template/img/logos/logo_login.png') }}" alt="Loading..." width="80"
+            class="animate__animated animate__pulse animate__infinite">
+    </div>
 
-<!-- Vendor JS Files -->
-<script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
-<script src="{{ asset('template/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('template/vendor/glightbox/js/glightbox.min.js') }}"></script>
-<script src="{{ asset('template/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('template/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('template/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('template/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-<!-- Main JS File -->
-<script src="{{ asset('template/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ asset('template/js/main.js') }}"></script>
 
-<script>
-// Preloader
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(function() {
-            preloader.style.opacity = '0';
-            preloader.style.transition = 'opacity 0.5s ease';
-            
+    <script>
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
             setTimeout(function() {
-                preloader.style.display = 'none';
+                preloader.style.opacity = '0';
+                preloader.style.transition = 'opacity 0.5s ease';
+
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
             }, 500);
-        }, 500);
-    }
-});
-
-// Scroll to top functionality with smooth animation
-window.addEventListener('scroll', function() {
-    var scrollTop = document.getElementById('scroll-top');
-    if (window.scrollY > 300) {
-        scrollTop.classList.add('active');
-    } else {
-        scrollTop.classList.remove('active');
-    }
-});
-
-document.getElementById('scroll-top').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        }
     });
-});
 
-// Initialize AOS animations
-AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-    mirror: false
-});
+    // Scroll to top functionality with smooth animation
+    window.addEventListener('scroll', function() {
+        var scrollTop = document.getElementById('scroll-top');
+        if (window.scrollY > 300) {
+            scrollTop.classList.add('active');
+        } else {
+            scrollTop.classList.remove('active');
+        }
+    });
 
-// Add animation to elements when they come into view
-document.addEventListener('DOMContentLoaded', function() {
-    const animateElements = document.querySelectorAll('.content-container, .card-custom');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
-                observer.unobserve(entry.target);
-            }
+    document.getElementById('scroll-top').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    }, {
-        threshold: 0.1
     });
-    
-    animateElements.forEach(element => {
-        observer.observe(element);
-    });
-});
 
-// Ensure all navigation links are visible against the background
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.header a, .navmenu a');
-    navLinks.forEach(link => {
-        link.style.color = 'white';
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
     });
-});
-</script>
+
+    // Add animation to elements when they come into view
+    document.addEventListener('DOMContentLoaded', function() {
+        const animateElements = document.querySelectorAll('.content-container, .card-custom');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+
+    // Ensure all navigation links are visible against the background
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.header a, .navmenu a');
+        navLinks.forEach(link => {
+            link.style.color = 'white';
+        });
+    });
+    </script>
 </body>
 
 </html>

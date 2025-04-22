@@ -30,8 +30,7 @@ $result = $conn->query($query);
                 <img src="{{ asset('template/img/hero-carousel/hero-carousel-1.jpg') }}" alt="">
                 <div class="carousel-container">
                     <h2>Receitas <span>Populares</span></h2>
-                    <p>Explore as receitas mais amadas que vão transformar as suas refeições! Desde pratos tradicionais
-                        a novas delícias, descubra sabores que encantam a todos.</p>
+                    <p>Explore receitas irresistíveis que vão dar um novo sabor às suas refeições, desde clássicos até novas delícias!</p>
                 </div>
             </div><!-- End Carousel Item -->
 
@@ -39,9 +38,7 @@ $result = $conn->query($query);
                 <img src="{{ asset('template/img/hero-carousel/hero-carousel-2.jpg') }}" alt="">
                 <div class="carousel-container">
                     <h2>Receitas para <span>Crianças</span></h2>
-                    <p>Descubra receitas divertidas e saudáveis que vão encantar os mais pequenos! Com ingredientes
-                        simples e preparações fáceis, estas delícias são perfeitas para envolver as crianças na cozinha
-                        e transformar as refeições em momentos de alegria e criatividade.</p>
+                    <p>Descubra receitas saudáveis e divertidas, ideais para envolver os mais pequenos na cozinha e tornar as refeições momentos de alegria!</p>
                 </div>
             </div><!-- End Carousel Item -->
 
