@@ -44,11 +44,11 @@
                         <p>{{ $receita->receita_descricao }}</p>
                     </div>
 
-                    <!-- Action Buttons -->
+                    <!-- Buttons -->
                     <div class="receita-actions">
-                        <button class="btn btn-warning"><i class="bi bi-printer"></i> Imprimir</button>
                         <button class="btn btn-outline-warning"><i class="bi bi-bookmark-plus"></i> Salvar</button>
                         <button class="btn btn-outline-primary"><i class="bi bi-share"></i> Compartilhar</button>
+                        
                     </div>
                 </div>
             </div>

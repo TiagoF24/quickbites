@@ -15,15 +15,15 @@
                         </div>
                         
                         
-                        <h4 class="mb-4">A sua conta foi suspensa</h4>
+                        <h4 class="mb-4">A sua conta foi suspensa de publicar receitas</h4>
                         
                         <p class="lead mb-4">
-                            Lamentamos informar que a sua conta foi suspensa por violar os termos de utilização do QuickBites.
+                            Lamentamos informar que a sua conta foi suspensa de publicar  <br> receitas por violar os termos de utilização da QuickBites.
                         </p>
                         
                         <div class="alert alert-light border mb-4">
                             <p class="mb-0">
-                                Se acredita que isto foi um erro ou deseja apelar desta decisão, por favor contacte a nossa equipe de suporte.
+                                Ainda pode visualizar e comentar receitas da comunidade.
                             </p>
                         </div>
                         

@@ -292,7 +292,7 @@ body {
 
                         @if(auth()->check() && auth()->user()->isAdmin())
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->routeIs('admin.dashboard')}}"
                                 href="{{ route('admin.dashboard') }}">
                                 <i class="bi bi-speedometer2 me-1"></i>Admin
                             </a>
@@ -339,7 +339,7 @@ body {
                     <div>
                         <h4>Contacto</h4>
                         <p>
-                            <strong>Email:</strong> <span>contact@quickbites.pt</span><br>
+                            <strong>Email:</strong> <span>suporte@quickbites.pt</span><br>
                         </p>
                     </div>
                 </div>

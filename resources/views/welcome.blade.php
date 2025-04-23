@@ -238,7 +238,7 @@ $result = $conn->query($query);
                                 <div class="icon-box mb-3">
                                     <i class="bi <?php echo $icon; ?> fs-1 text-warning"></i>
                                 </div>
-                                <h5 class="card-title"><?php echo htmlspecialchars($categoryName); ?></h5>
+                                <h7 class="card-title"><?php echo htmlspecialchars($categoryName); ?></h7>
                                 <p class="card-text text-muted"><?php echo $recipeCount; ?> receitas</p>
                             </div>
                         </div>

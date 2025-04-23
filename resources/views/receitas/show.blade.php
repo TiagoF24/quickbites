@@ -40,6 +40,7 @@
             </div>
         @endif
     </div>
+    
 
     <!-- Seção de Detalhes da Receita com Design Melhorado -->
     <section class="receita-details section py-5">
@@ -227,10 +228,6 @@
                                     </li>
                                 </ul>
                             </div>
-
-                            <button class="btn btn-outline-secondary btn-lg" onclick="window.print()">
-                                <i class="bi bi-printer"></i> Imprimir
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -143,30 +143,6 @@
                     </a>
                 </div>
                 
-                <!-- Admin Info Card -->
-                <div class="card shadow-sm mt-4">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle bg-light d-flex justify-content-center align-items-center me-3"
-                                style="width: 50px; height: 50px;">
-                                <i class="bi bi-person-badge fs-4 text-primary"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-0">{{ auth()->user()->name }}</h6>
-                                <small class="text-muted">Administrador</small>
-                            </div>
-                        </div>
-                        <div class="d-grid">
-                            <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary" 
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="bi bi-box-arrow-right me-1"></i> Terminar Sessão
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="col-md-9">
@@ -207,7 +183,7 @@
                                                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                                     <td>
                                                         @if($user->is_banned)
-                                                            <span class="badge bg-danger">Banido</span>
+                                                            <span class="badge bg-danger">Suspenso</span>
                                                         @else
                                                             <span class="badge bg-success">Ativo</span>
                                                         @endif
@@ -222,8 +198,8 @@
                                                                 @csrf
                                                                 @method('PATCH')
                                                                 <button type="submit" class="btn btn-sm {{ $user->is_banned ? 'btn-success' : 'btn-danger' }}" 
-                                                                        onclick="return confirm('{{ $user->is_banned ? 'Deseja desbanir este utilizador?' : 'Deseja banir este utilizador?' }}')">
-                                                                    {{ $user->is_banned ? 'Desbanir' : 'Banir' }}
+                                                                        onclick="return confirm('{{ $user->is_banned ? 'Remover suspensão?' : 'Deseja suspender este utilizador?' }}')">
+                                                                    {{ $user->is_banned ? 'Remover Suspensão' : 'Suspender' }}
                                                                 </button>
                                                             </form>
                                                         @else

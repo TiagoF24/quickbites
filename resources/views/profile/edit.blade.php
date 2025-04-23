@@ -141,6 +141,8 @@
                 </div>
             </div>
 
+
+            
             <!-- Receitas Favoritas -->
             <div class="mt-8">
                 <div class="flex items-center justify-between mb-4">
