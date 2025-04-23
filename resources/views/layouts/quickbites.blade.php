@@ -86,7 +86,6 @@ body {
     background-attachment: fixed;
     /* Fixa o fundo */
     z-index: 1;
-    /* Garante que o fundo não se sobreponha ao conteúdo */
 
 
 }
@@ -118,7 +117,6 @@ body {
 .navmenu ul li a:hover,
 .navmenu ul li a.active {
     background: rgba(255, 255, 255, 0.2);
-    /* Efeito de destaque */
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
 }
@@ -144,17 +142,19 @@ body {
 
 /* Estilização do botão Criar */
 .btnCriar {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: #ff6b00 !important;
     color: white !important;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: all 0.3s ease-in-out;
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    text-decoration: none;
 }
 
 .btnCriar:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
+    background-color: rgb(255, 0, 0) !important;
+    /* Cor mais escura ao passar o mouse */
 }
 
 /* Footer Styling */
@@ -258,23 +258,6 @@ body {
                         @endguest
 
                         @auth
-                        <style>
-                        .btnCriar {
-                            background-color: #ff6b00 !important;
-                            color: white !important;
-                            padding: 8px 16px !important;
-                            border-radius: 4px !important;
-                            display: inline-flex !important;
-                            align-items: center !important;
-                            gap: 6px !important;
-                            text-decoration: none;
-                        }
-
-                        .btnCriar:hover {
-                            background-color: rgb(255, 0, 0) !important;
-                            /* Cor mais escura ao passar o mouse */
-                        }
-                        </style>
                         <li>
                             <a href="/criar" class="btnCriar">
                                 <span style="font-size: d24px;">+</span> Criar
