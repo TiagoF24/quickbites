@@ -46,185 +46,188 @@
   ======================================================== -->
 </head>
 <style>
-     :root {
-            --primary-color: #ff6b00;
-            --primary-dark: #e05a00;
-            --primary-light: #ff8c3f;
-            --secondary-color: #ffc107;
-            --accent-color: #ff4500;
-            --text-color: #333333;
-            --light-text: #ffffff;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
-        }
-        
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-        Evitar o scroll horizontal background-color: #000000;
-    }
+:root {
+    --primary-color: #ff6b00;
+    --primary-dark: #e05a00;
+    --primary-light: #ff8c3f;
+    --secondary-color: #ffc107;
+    --accent-color: #ff4500;
+    --text-color: #333333;
+    --light-text: #ffffff;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f8f9fa;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s ease;
+}
 
-    /* Estilização da Navbar com fundo laranja gradiente */
-    /* Navbar com textura de cozinha */
-    .header {
-        background: url("{{ asset('template/img/navbar-texture.png') }}");
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    Evitar o scroll horizontal background-color: #000000;
+}
 
-        /* Link para uma textura de madeira */
-        background-size: 100%;
-        /* Ajuste para diminuir o padrão */
-        background-repeat: repeat;
-        /* Faz a textura se repetir */
-        background-position: 20% 10%;
-        /* Centraliza a textura de forma relativa */
-        padding: 12px 0;
-        transition: all 0.3s ease-in-out;
-        background-attachment: fixed;
-        /* Fixa o fundo */
-        z-index: 1;
-        /* Garante que o fundo não se sobreponha ao conteúdo */
+/* Estilização da Navbar com fundo laranja gradiente */
+/* Navbar com textura de cozinha */
+.header {
+    background: url("{{ asset('template/img/navbar-texture.png') }}");
 
-
-    }
+    /* Link para uma textura de madeira */
+    background-size: 100%;
+    /* Ajuste para diminuir o padrão */
+    background-repeat: repeat;
+    /* Faz a textura se repetir */
+    background-position: 20% 10%;
+    /* Centraliza a textura de forma relativa */
+    padding: 12px 0;
+    transition: all 0.3s ease-in-out;
+    background-attachment: fixed;
+    /* Fixa o fundo */
+    z-index: 1;
+    /* Garante que o fundo não se sobreponha ao conteúdo */
 
 
-    /* Estilização do menu de navegação */
-    .navmenu ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin: 0;
-        padding: 0;
-    }
+}
 
-    .navmenu ul li a {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 500;
-        font-size: 16px;
-        text-transform: uppercase;
-        color: white;
-        /* Texto branco para contraste */
-        padding: 10px 15px;
-        border-radius: 8px;
-        transition: all 0.3s ease-in-out;
-    }
 
-    /* Animação de hover */
-    .navmenu ul li a:hover,
-    .navmenu ul li a.active {
-        background: rgba(255, 255, 255, 0.2);
-        /* Efeito de destaque */
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    }
+/* Estilização do menu de navegação */
+.navmenu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
 
-    /* Dropdown */
-    .navmenu .dropdown ul {
-        position: absolute;
-        left: 0;
-        top: 40px;
-        background: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease-in-out;
-    }
+.navmenu ul li a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    /* Texto branco para contraste */
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
 
-    .navmenu .dropdown:hover ul {
-        opacity: 1;
-        visibility: visible;
-    }
+/* Animação de hover */
+.navmenu ul li a:hover,
+.navmenu ul li a.active {
+    background: rgba(255, 255, 255, 0.2);
+    /* Efeito de destaque */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
 
-    /* Estilização do botão Criar */
-    .btnCriar {
-        background: rgba(255, 255, 255, 0.2);
-        color: white !important;
-        padding: 10px 18px;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: all 0.3s ease-in-out;
-    }
+/* Dropdown */
+.navmenu .dropdown ul {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
 
-    .btnCriar:hover {
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(1.05);
-    }
+.navmenu .dropdown:hover ul {
+    opacity: 1;
+    visibility: visible;
+}
 
-    /* Footer Styling */
-    .footer {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            padding: 3rem 0 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
+/* Estilização do botão Criar */
+.btnCriar {
+    background: rgba(255, 255, 255, 0.2);
+    color: white !important;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-        }
+.btnCriar:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
 
-        .footer h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 10px;
-            color: white; /* Garantindo que os títulos do footer sejam brancos */
-        }
+/* Footer Styling */
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    padding: 3rem 0 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
 
-        .footer h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 10px;
-        }
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+}
 
-        .footer p, .footer span, .footer a {
-            color: var(--light-text); /* Garantindo que todo texto no footer seja branco */
-        }
+.footer h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 10px;
+    color: white;
+    /* Garantindo que os títulos do footer sejam brancos */
+}
 
-        .footer .icon {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
+.footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
 
-        .footer .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
-            margin-right: 10px;
-            transition: var(--transition);
-        }
+.footer p,
+.footer span,
+.footer a {
+    color: var(--light-text);
+    /* Garantindo que todo texto no footer seja branco */
+}
 
-        .footer .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
+.footer .icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
 
+.footer .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    margin-right: 10px;
+    transition: var(--transition);
+}
+
+.footer .social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
 </style>
 
 
@@ -239,7 +242,6 @@
 
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="/" class="logo d-flex align-items-center">
-                    <!-- Uncomment the line below if you also wish to use an image logo -->
                     <img src="{{ asset('template/img/logos/logo_login.png') }}" style="" alt="">
                     <h1 class="sitename" style="text-shadow: #000000 0px 0px 10px;">QuickBites</h1>
                 </a>
@@ -247,71 +249,72 @@
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a href="/" class="active">Início</a></li>
-                        {{-- <li><a href="#about">About</a></li> --}}
-                        {{-- <li><a href="#menu">Menu</a></li> --}}
-                        {{-- <li><a href="#specials">Specials</a></li> --}}
-                        {{-- <li><a href="#events">Events</a></li> --}}
-                        {{-- <li><a href="#chefs">Chefs</a></li> --}}
-                        {{-- <li><a href="#gallery">Gallery</a></li> --}}
+
                         <li><a href="/receitas"><i class="bi bi-search"></i> <span> Pesquisar</span></i></a>
 
-                        @guest
-                            <li><a href="/login">Entrar</a></li>
-                            <li><a href="/register">Registar</a></li>
+                            @guest
+                        <li><a href="/login">Entrar</a></li>
+                        <li><a href="/register">Registar</a></li>
                         @endguest
 
                         @auth
-                            <style>
-                                .btnCriar {
-                                    background-color: #ff6b00 !important;
-                                    color: white !important;
-                                    padding: 8px 16px !important;
-                                    border-radius: 4px !important;
-                                    display: inline-flex !important;
-                                    align-items: center !important;
-                                    gap: 6px !important;
-                                    text-decoration: none;
-                                }
+                        <style>
+                        .btnCriar {
+                            background-color: #ff6b00 !important;
+                            color: white !important;
+                            padding: 8px 16px !important;
+                            border-radius: 4px !important;
+                            display: inline-flex !important;
+                            align-items: center !important;
+                            gap: 6px !important;
+                            text-decoration: none;
+                        }
 
-                                .btnCriar:hover {
-                                    background-color: rgb(255, 0, 0) !important;
-                                    /* Cor mais escura ao passar o mouse */
-                                }
-
-
-                              
-                            </style>
-                            <li>
-                                <a href="/criar" class="btnCriar">
-                                    <span style="font-size: 24px;">+</span> Criar
-                                </a>
-                            </li>
+                        .btnCriar:hover {
+                            background-color: rgb(255, 0, 0) !important;
+                            /* Cor mais escura ao passar o mouse */
+                        }
+                        </style>
+                        <li>
+                            <a href="/criar" class="btnCriar">
+                                <span style="font-size: d24px;">+</span> Criar
+                            </a>
+                        </li>
 
 
-                            <!-- Settings Dropdown -->
-                            <li class="dropdown">
-                                <a href="#">
-                                    @if(Auth::user()->profile_photo)
-                                        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile"
-                                            class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
-                                    @else
-                                        <i class="bi bi-person-circle me-2"></i>
-                                    @endif
-                                    <span>{{ Auth::user()->name }}</span>
-                                    <i class="bi bi-chevron-down toggle-dropdown"></i>
-                                </a>
-                                <ul>
-                                    <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                        <!-- Settings Dropdown -->
+                        <li class="dropdown">
+                            <a href="#">
+                                @if(Auth::user()->profile_photo)
+                                <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile"
+                                    class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                @else
+                                <i class="bi bi-person-circle me-2"></i>
+                                @endif
+                                <span>{{ Auth::user()->name }}</span>
+                                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                            </a>
+                            <ul>
+                                <li><a href="{{ route('profile.edit') }}">Perfil</a></li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                                         this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </x-responsive-nav-link>
-                                    </form>
-                                </ul>
-                            </li>
+                                        {{ __('Log Out') }}
+                                    </x-responsive-nav-link>
+                                </form>
+                            </ul>
+                        </li>
                         @endauth
+
+                        @if(auth()->check() && auth()->user()->isAdmin())
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
+                                href="{{ route('admin.dashboard') }}">
+                                <i class="bi bi-speedometer2 me-1"></i>Admin
+                            </a>
+                        </li>
+                        @endif
 
 
                     </ul>
@@ -324,7 +327,7 @@
         </div>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+
     </header>
 
     <main class="main">

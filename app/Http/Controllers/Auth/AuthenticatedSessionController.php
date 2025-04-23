@@ -25,10 +25,20 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
+        
+        if (Auth::user()->is_banned) {
+            Auth::logout();
+            
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            
+            return redirect()->route('login')
+                ->withErrors(['email' => 'A sua conta foi suspensa. Por favor, contacte o administrador.']);
+        }
+    
         $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+    
+        return redirect()->route('check.banned');
     }
 
     /**
@@ -42,6 +52,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('welcome');
     }
+
+    
 }

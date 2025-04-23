@@ -276,10 +276,6 @@
                                                         </option>
                                                     <?php endwhile; ?>
                                                 </select>
-                                                
-                                                <a href="{{ route('categorias.create') }}" class="ml-3 inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-600 transition-colors" target="_blank">
-                                                    <i class="bi bi-plus-lg mr-1"></i> Nova Categoria
-                                                </a>
                                             </div>
                                             @error('categoria')
                                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

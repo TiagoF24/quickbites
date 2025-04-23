@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorias;
 use Illuminate\Http\Request;
 use Doctrine\Inflector\InflectorFactory;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriasController extends Controller
 {
@@ -15,6 +16,10 @@ class CategoriasController extends Controller
      */
     public function create()
     {
+        // Check if user is admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            abort(403, 'Acesso não autorizado.');
+        }
 
         return view('categorias.create');
     }
@@ -26,8 +31,12 @@ class CategoriasController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
-    
     {
+        // Check if user is admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            abort(403, 'Acesso não autorizado.');
+        }
+        
         // Criar um objeto Inflector para manipular singular/plural
         $inflector = InflectorFactory::create()->build();
         $nome = strtolower($request->nome);
@@ -59,12 +68,29 @@ class CategoriasController extends Controller
             'nome' => $request->nome,
         ]);
 
-        return redirect()->route('categorias.create')->with('success', 'Categoria criada com sucesso!');
+        return redirect()->route('admin.dashboard')->with('success', 'Categoria criada com sucesso!');
     }
 
     public function index()
     {
         $categorias = Categorias::all();
         return view('categorias.index', compact('categorias'));
+    }
+    
+    /**
+     * Delete a category
+     * 
+     * @param Categorias $categoria
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Categorias $categoria)
+    {
+        // Check if user is admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            abort(403, 'Acesso não autorizado.');
+        }
+        
+        $categoria->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Categoria eliminada com sucesso!');
     }
 }

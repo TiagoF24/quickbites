@@ -24,6 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'profile_photo',
+        'is_admin',
+        'is_banned',
     ];
 
     /**
@@ -69,5 +71,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favoriteReceitas()
     {
         return $this->belongsToMany(Receita::class, 'favorites', 'user_id', 'receita_id')->withTimestamps();
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }

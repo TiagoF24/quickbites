@@ -7,16 +7,19 @@ use App\Http\Controllers\ReceitaController;
 use App\Http\Controllers\AdminController;
 
 
+// Add this at the top of your routes/web.php file
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Route::get('/criar', function () {
+    if (auth()->user()->is_banned) {
+        return redirect()->route('banned');
+    }
+    
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/categorias/create', [CategoriasController::class, 'create'])->name('categorias.create');
+})->middleware(['auth'])->name('dashboard');
 
 Route::post('/categorias', [CategoriasController::class, 'store'])->name('categorias.store');
 
@@ -67,10 +70,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
-Route::get('/admin', [AdminController::class, 'index']);
 
-
-// Favorite routes
+// Favoritos
 Route::middleware(['auth'])->group(function () {
     Route::post('/receitas/{receita}/favorite', [App\Http\Controllers\FavoriteController::class, 'toggle'])->name('receitas.favorite');
     Route::get('/favorites', [App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
@@ -78,8 +79,41 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/receitas/{receita}/rate', [ReceitaController::class, 'rate'])->name('receitas.rate');
 });
 
-// User favorites (public)
+
 Route::get('/profile/{user}/favorites', [App\Http\Controllers\ReceitaController::class, 'userFavorites'])->name('profile.favorites');
+
+// Route::get('/categorias', function () {
+//     $categorias = DB::table('categorias')->select('nome')->orderBy('nome')->get();
+//     return response()->json($categorias);
+// });
+
+Route::get('/categorias', function () {
+    $categorias = DB::table('categorias')
+                    ->select('nome')
+                    ->orderBy('nome')
+                    ->get();
+    
+    return response()->json($categorias);
+});
+
+// Admin routes
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::patch('/users/{user}/toggle-ban', [App\Http\Controllers\AdminController::class, 'toggleUserBan'])->name('users.toggle-ban');
+    Route::delete('/receitas/{receita}', [App\Http\Controllers\AdminController::class, 'deleteReceita'])->name('receitas.delete');
+    Route::delete('/categorias/{categoria}', [App\Http\Controllers\CategoriasController::class, 'destroy'])->name('categorias.delete');
+});
+
+// Banned user route
+Route::get('/banned', [App\Http\Controllers\Auth\BannedUserController::class, 'index'])
+    ->name('banned');
+
+
+// Check banned status after login
+Route::get('/check-banned', [App\Http\Controllers\Auth\BannedUserController::class, 'check'])
+    ->middleware('auth')
+    ->name('check.banned');
+
 
 
 require __DIR__.'/auth.php';

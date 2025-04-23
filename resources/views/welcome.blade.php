@@ -232,8 +232,8 @@ $result = $conn->query($query);
                     $icon = isset($icons[$categoryName]) ? $icons[$categoryName] : 'bi-tag';
             ?>
                 <div class="col-md-4 col-lg-2">
-                    <a href="/receitas?categoria=<?php echo urlencode($categoryName); ?>" class="text-decoration-none">
-                        <div class="card h-100 text-center category-card border-0 shadow-sm">
+                <a href="{{ route('receitas.index') }}?search=&category=<?php echo urlencode($categoryName); ?>" class="text-decoration-none">
+                <div class="card h-100 text-center category-card border-0 shadow-sm">
                             <div class="card-body">
                                 <div class="icon-box mb-3">
                                     <i class="bi <?php echo $icon; ?> fs-1 text-warning"></i>
