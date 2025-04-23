@@ -257,7 +257,16 @@
                                          style="width: 60px; height: 60px; object-fit: cover;">
                                 </td>
                                 <td>{{ $receita->receita_titulo }}</td>
-                                <td>{{ $receita->user->name ?? 'Utilizador Eliminado' }}</td>
+                                <td>
+                                    @if($receita->autor_id && $receita->user)
+                                        {{ $receita->user->name }}
+                                    @elseif($receita->autor)
+                                        {{ $receita->autor }}
+                                    @else
+                                        <span class="text-muted">Utilizador Eliminado</span>
+                                    @endif
+                                </td>
+                                
                                 <td>
                                     <span class="badge bg-light text-dark">
                                         {{ $receita->categoria ?? 'N/A' }}
@@ -298,7 +307,6 @@
         </div>
     </div>
 </div>
-
                     
                     <!-- Categorias Tab -->
                     <div class="tab-pane fade" id="categories">
@@ -406,7 +414,7 @@
         </div>
     </div>
     
-    <!-- Add Category Modal -->
+    <!-- Adicionar Categoria-->
     <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
