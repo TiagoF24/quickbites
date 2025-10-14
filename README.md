@@ -8,7 +8,7 @@
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/status-in%20development-orange" alt="Project Status"></a>
   <a href="#"><img src="https://img.shields.io/badge/Laravel-Framework-red" alt="Laravel"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/seuusuario/quickbites" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/TiagoF24/quickbites" alt="License"></a>
 </p>
 
 ---
@@ -27,10 +27,7 @@ Desenvolvido com **Laravel**, com foco em performance, usabilidade e uma arquite
 
 - ⚙️ **Laravel** — Backend e lógica de aplicação  
 - 💾 **MySQL/PostgreSQL** — Persistência de dados  
-- 🎨 **Blade / Tailwind CSS** — Frontend elegante e responsivo  
-- 🛡️ **Sanctum / Passport** — Autenticação segura  
-- 🔁 **API RESTful** — Integração com frontend ou mobile (opcional)
-
+- 🎨 **Blade / Bootstrap/ Tailwind CSS** — Frontend elegante e responsivo  
 ---
 
 ## 📸 Funcionalidades
