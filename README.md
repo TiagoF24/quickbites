@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="template/img/favicon.png" width="300" alt="Laravel Logo">
+  <img src="public/template/img/favicon.png" width="300" alt="Laravel Logo">
 </p>
 
 <h1 align="center">QuickBites</h1>
