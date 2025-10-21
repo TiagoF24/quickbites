@@ -1,5 +1,7 @@
+# QuickBites 🍽️
+
 <p align="center">
-  <img src="public/template/img/logos/logo2.png" width="300" alt="Laravel Logo">
+  <img src="public/template/img/logos/logo2.png" width="300" alt="QuickBites Logo">
 </p>
 
 <h1 align="center">QuickBites</h1>
@@ -27,7 +29,8 @@ Desenvolvido com **Laravel**, com foco em performance, usabilidade e uma arquite
 
 - ⚙️ **Laravel** — Backend e lógica de aplicação  
 - 💾 **MySQL/PostgreSQL** — Persistência de dados  
-- 🎨 **Blade / Bootstrap/ Tailwind CSS** — Frontend elegante e responsivo  
+- 🎨 **Blade / Bootstrap / Tailwind CSS** — Frontend elegante e responsivo
+
 ---
 
 ## 📸 Funcionalidades
@@ -45,13 +48,13 @@ Desenvolvido com **Laravel**, com foco em performance, usabilidade e uma arquite
 Clone o projeto e instale as dependências:
 
 ```bash
-git clone https://github.com/seuusuario/quickbites.git
+git clone https://github.com/TiagoF24/quickbites.git
 cd quickbites
 
 composer install
 cp .env.example .env
 php artisan key:generate
 
-# Configure o banco de dados no .env, então:
+# Configure o banco de dados no arquivo .env
 php artisan migrate
 php artisan serve
