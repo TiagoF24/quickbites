@@ -93,33 +93,6 @@ Estamos orgulhosos de contar com o apoio de grandes marcas da indústria aliment
 
 ---
 
-## 📦 Instalação Local
-
-Para rodar o projeto localmente, siga os passos abaixo:
-
-```bash
-# Clone o repositório
-git clone https://github.com/TiagoF24/quickbites.git
-cd quickbites
-
-# Instale as dependências PHP
-composer install
-
-# Copie o arquivo de ambiente
-cp .env.example .env
-
-# Gere a chave da aplicação
-php artisan key:generate
-
-# Configure seu banco de dados no arquivo .env
-
-# Execute as migrações
-php artisan migrate
-
-# Inicie o servidor local
-php artisan serve
-```
-
 
 ## 🎮 Como Usar
 
@@ -176,3 +149,17 @@ git commit -m "feat: nova funcionalidade"
 git push origin minha-feature
 
 # Abra um Pull Request 🚀
+```
+
+---
+
+##📝 Licença
+
+Este projeto está licenciado sob os termos da licença MIT.
+Veja o arquivo LICENSE para mais detalhes.
+
+##📬 Contato
+
+📧 Email: contato@quickbites.com
+🧑‍💻 GitHub: @TiagoF24
+<p align="center">Feito com ❤️ por amantes da culinária e da tecnologia.</p>
