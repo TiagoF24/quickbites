@@ -161,5 +161,6 @@ Veja o arquivo LICENSE para mais detalhes.
 ## 📬 Contato
 
 📧 Email: contato@quickbites.com
+
 🧑‍💻 GitHub: @TiagoF24
 <p align="center">Feito com ❤️ por amantes da culinária e da tecnologia.</p>
