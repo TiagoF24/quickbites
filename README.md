@@ -1,33 +1,39 @@
-# QuickBites 🍽️
+# 🍽️ QuickBites — Sua Comunidade Gastronômica
 
 <p align="center">
-  <img src="public/template/img/logos/logo2.png" width="300" alt="QuickBites Logo">
+  <img src="public/template/img/logos/logo2.png" width="280" alt="QuickBites Logo">
 </p>
 
-<h1 align="center">QuickBites</h1>
-<p align="center">🍽️ Cook. Publish. Share. Comment. Uma plataforma social de receitas construída com Laravel.</p>
+<p align="center">
+  <strong>Cook. Publish. Share. Comment.</strong><br>
+  Uma plataforma social de receitas construída com Laravel.
+</p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/status-em%20desenvolvimento-orange" alt="Status do Projeto"></a>
+  <a href="#"><img src="https://img.shields.io/badge/status-em%20desenvolvimento-orange" alt="Status"></a>
   <a href="#"><img src="https://img.shields.io/badge/Laravel-Framework-red" alt="Laravel"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/TiagoF24/quickbites" alt="Licença"></a>
 </p>
 
 ---
 
-## 🚀 Sobre o Projeto
+## 🚀 Visão Geral
 
-**QuickBites** é uma plataforma social voltada para apaixonados por culinária. Usuários podem compartilhar suas receitas, explorar pratos de outros membros, comentar, curtir e se conectar em uma comunidade rica em sabores.
+O **QuickBites** é mais do que apenas um site de receitas — é uma comunidade viva onde amantes da culinária podem:
 
-Construído com **Laravel**, o projeto foca em performance, experiência do usuário e código limpo.
+- Compartilhar suas criações gastronômicas 🍝  
+- Interagir com outros cozinheiros 🍷  
+- Descobrir pratos incríveis ao redor do mundo 🌍  
 
-> Projeto desenvolvido em parceria com o **SENA**.
+Projetado com **Laravel** no backend e um frontend elegante e responsivo com **Blade**, **Bootstrap** e **Tailwind CSS**.
+
+> 🔗 Projeto desenvolvido em parceria com o **SENA**.
 
 ---
 
-## 🤝 Parcerias Estratégicas
+## 🤝 Parcerias Oficiais
 
-O QuickBites colabora com algumas das maiores marcas da indústria alimentícia para trazer receitas exclusivas, experiências temáticas e conteúdos especiais para nossos usuários.
+Estamos orgulhosos de contar com o apoio de grandes marcas da indústria alimentícia:
 
 <p align="center">
   <a href="https://www.mcdonalds.com/" target="_blank">
@@ -53,53 +59,59 @@ O QuickBites colabora com algumas das maiores marcas da indústria alimentícia 
 
 ### 🍔 Receitas em Destaque
 
-- **McDonald's®** – Crie versões caseiras de clássicos como Big Mac e McChicken  
-- **Subway®** – Monte seu sanduíche ideal com os ingredientes mais pedidos  
-- **Nestlé®** – Dicas e receitas com produtos da linha Nestlé  
-- **Outback Steakhouse®** – Pratos temáticos e receitas inspiradas no menu  
-- **Starbucks®** – Bebidas famosas para preparar em casa
+- **McDonald's®** — recrie clássicos como Big Mac e Egg McMuffin  
+- **Subway®** — monte seu sanduíche personalizado  
+- **Nestlé®** — sobremesas com ingredientes da marca  
+- **Outback®** — pratos temáticos e versões caseiras  
+- **Starbucks®** — bebidas frias e quentes para fazer em casa  
 
-> 💼 Quer ser nosso parceiro? Entre em contato via [parcerias@quickbites.com](mailto:parcerias@quickbites.com)
+> 💼 Deseja se tornar parceiro? Entre em contato via [parcerias@quickbites.com](mailto:parcerias@quickbites.com)
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- ⚙️ **Laravel** — Backend robusto e moderno  
-- 💾 **MySQL / PostgreSQL** — Gerenciamento de dados eficiente  
-- 🎨 **Blade / Bootstrap / Tailwind CSS** — Interface responsiva e amigável  
+| Tecnologia     | Descrição                         |
+|----------------|----------------------------------|
+| Laravel        | Backend moderno e robusto         |
+| MySQL/PostgreSQL | Banco de dados relacional         |
+| Blade          | Engine de templates do Laravel    |
+| Bootstrap/Tailwind | Estilização e responsividade    |
+| PHP            | Lógica do servidor                |
+| JavaScript     | Funcionalidades interativas       |
 
 ---
 
 ## 📸 Funcionalidades
 
-- ✅ Cadastro e autenticação de usuários  
-- ✅ Publicação de receitas com imagens, ingredientes e modo de preparo  
-- ✅ Comentários e interações sociais  
-- ✅ Sistema de busca por nome, ingredientes e categorias  
-- ✅ Perfil do usuário com gerenciamento de receitas
+- 👥 Cadastro e login de usuários
+- 📷 Publicação de receitas com imagens e descrições
+- 💬 Comentários e curtidas em receitas
+- 🔍 Busca por nome, ingredientes ou categorias
+- 👤 Perfil do usuário com suas receitas favoritas
+- 📦 Admin para gerenciar usuários e conteúdo
 
 ---
 
 ## 📦 Instalação Local
 
-Para rodar o projeto localmente, siga os passos abaixo:
+Clone o projeto e siga os passos:
 
 ```bash
 # Clone o repositório
 git clone https://github.com/TiagoF24/quickbites.git
 cd quickbites
 
-# Instale as dependências PHP
+# Instale dependências PHP
 composer install
 
-# Copie o arquivo de ambiente e gere a key da aplicação
+# Configure o ambiente
 cp .env.example .env
 php artisan key:generate
 
-# Configure as credenciais do banco de dados no arquivo .env
+# Ajuste o .env com as credenciais do banco de dados
 
-# Execute as migrações
+# Rode as migrações
 php artisan migrate
 
 # Inicie o servidor local
