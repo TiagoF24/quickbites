@@ -107,14 +107,14 @@ Estamos orgulhosos de contar com o apoio de grandes marcas da indústria aliment
 
 ## 🗺️ Roadmap
 
-- Autenticação de usuários  
-- Sistema de publicação de receitas  
-- Upload de imagem para receitas  
-- Comentários e interações  
-- Modo escuro 🌙  
-- Notificações por e-mail 📬  
-- Sistema de seguidores 👥  
-- Aplicativo mobile com Flutter 📱  
+- [x] Autenticação de usuários  
+- [x] Sistema de publicação de receitas  
+- [x] Upload de imagem para receitas  
+- [x] Comentários e interações  
+- [ ] Modo escuro 🌙  
+- [ ] Notificações por e-mail 📬  
+- [ ] Sistema de seguidores 👥  
+- [ ] Aplicativo mobile com Flutter 📱  
 
 ---
 
