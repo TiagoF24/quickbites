@@ -31,19 +31,19 @@ O QuickBites tem orgulho de contar com o apoio de grandes nomes da indústria al
 
 <p align="center">
   <a href="https://www.mcdonalds.com/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/McDonald%27s_logo.svg" alt="McDonald's" width="100">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/250px-McDonald%27s_Golden_Arches.svg.png" alt="McDonald's" width="100">
   </a>
   &nbsp;&nbsp;
   <a href="https://www.subway.com/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Subway_2016_logo.svg" alt="Subway" width="100">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Subway_2016_logo.svg/330px-Subway_2016_logo.svg.png" alt="Subway" width="100">
   </a>
   &nbsp;&nbsp;
   <a href="https://www.nestle.com/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Nestle_textlogo_blue.svg/512px-Nestle_textlogo_blue.svg.png" alt="Nestlé" width="100">
+    <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/1/1f/Nestl%C3%A9_logo.svg/250px-Nestl%C3%A9_logo.svg.png" alt="Nestlé" width="100">
   </a>
   &nbsp;&nbsp;
   <a href="https://www.outback.com/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Outback_Steakhouse_logo.svg" alt="Outback Steakhouse" width="100">
+    <img src="https://upload.wikimedia.org/wikipedia/pt/2/27/Outback_Steakhouse.png" alt="Outback Steakhouse" width="100">
   </a>
   &nbsp;&nbsp;
   <a href="https://www.starbucks.com/" target="_blank">
