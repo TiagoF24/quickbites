@@ -105,22 +105,6 @@ Estamos orgulhosos de contar com o apoio de grandes marcas da indústria aliment
 
 ---
 
-## 🖼️ Screenshots
-
-*(Adicione suas imagens reais no diretório `screenshots/` e substitua os exemplos abaixo)*
-
-<p align="center">
-  <img src="screenshots/home.png" width="600" alt="Tela Inicial"><br>
-  <em>🏠 Página inicial com receitas em destaque</em>
-</p>
-
-<p align="center">
-  <img src="screenshots/recipe.png" width="600" alt="Página da Receita"><br>
-  <em>📖 Detalhes de uma receita com imagem, preparo e comentários</em>
-</p>
-
----
-
 ## 🗺️ Roadmap
 
 - [x] Autenticação de usuários  
