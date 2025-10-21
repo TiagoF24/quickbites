@@ -153,12 +153,12 @@ git push origin minha-feature
 
 ---
 
-##📝 Licença
+## 📝 Licença
 
 Este projeto está licenciado sob os termos da licença MIT.
 Veja o arquivo LICENSE para mais detalhes.
 
-##📬 Contato
+## 📬 Contato
 
 📧 Email: contato@quickbites.com
 🧑‍💻 GitHub: @TiagoF24
