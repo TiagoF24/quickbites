@@ -71,48 +71,122 @@ Estamos orgulhosos de contar com o apoio de grandes marcas da indústria aliment
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Tecnologia     | Descrição                         |
-|----------------|----------------------------------|
-| Laravel        | Backend moderno e robusto         |
-| MySQL/PostgreSQL | Banco de dados relacional         |
-| Blade          | Engine de templates do Laravel    |
-| Bootstrap/Tailwind | Estilização e responsividade    |
-| PHP            | Lógica do servidor                |
-| JavaScript     | Funcionalidades interativas       |
+| Tecnologia        | Descrição                         |
+|-------------------|----------------------------------|
+| Laravel           | Backend moderno e robusto         |
+| MySQL/PostgreSQL  | Banco de dados relacional         |
+| Blade             | Engine de templates do Laravel    |
+| Bootstrap/Tailwind| Estilização e responsividade      |
+| PHP               | Lógica do servidor                |
+| JavaScript        | Funcionalidades interativas       |
 
 ---
 
 ## 📸 Funcionalidades
 
-- 👥 Cadastro e login de usuários
-- 📷 Publicação de receitas com imagens e descrições
-- 💬 Comentários e curtidas em receitas
-- 🔍 Busca por nome, ingredientes ou categorias
-- 👤 Perfil do usuário com suas receitas favoritas
-- 📦 Admin para gerenciar usuários e conteúdo
+- 👥 Cadastro e login de usuários  
+- 📷 Publicação de receitas com imagens e descrições  
+- 💬 Comentários e curtidas em receitas  
+- 🔍 Busca por nome, ingredientes ou categorias  
+- 👤 Perfil do usuário com suas receitas favoritas  
+- 🛡️ Painel administrativo para moderação  
 
 ---
 
 ## 📦 Instalação Local
 
-Clone o projeto e siga os passos:
+Para rodar o projeto localmente, siga os passos abaixo:
 
 ```bash
 # Clone o repositório
 git clone https://github.com/TiagoF24/quickbites.git
 cd quickbites
 
-# Instale dependências PHP
+# Instale as dependências PHP
 composer install
 
-# Configure o ambiente
+# Copie o arquivo de ambiente
 cp .env.example .env
+
+# Gere a chave da aplicação
 php artisan key:generate
 
-# Ajuste o .env com as credenciais do banco de dados
+# Configure seu banco de dados no arquivo .env
 
-# Rode as migrações
+# Execute as migrações
 php artisan migrate
 
 # Inicie o servidor local
 php artisan serve
+
+
+## 🎮 Como Usar
+
+- Crie uma conta gratuitamente  
+- Explore receitas por categoria ou ingredientes  
+- Publique suas próprias receitas com imagem, ingredientes e instruções  
+- Interaja com outras pessoas através de comentários e curtidas  
+- Gerencie seu perfil e salve suas receitas favoritas  
+
+---
+
+## 🖼️ Screenshots
+
+*(Adicione suas imagens reais no diretório `screenshots/` e substitua os exemplos abaixo)*
+
+<p align="center">
+  <img src="screenshots/home.png" width="600" alt="Tela Inicial"><br>
+  <em>🏠 Página inicial com receitas em destaque</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/recipe.png" width="600" alt="Página da Receita"><br>
+  <em>📖 Detalhes de uma receita com imagem, preparo e comentários</em>
+</p>
+
+---
+
+## 🗺️ Roadmap
+
+- Autenticação de usuários  
+- Sistema de publicação de receitas  
+- Upload de imagem para receitas  
+- Comentários e interações  
+- Modo escuro 🌙  
+- Notificações por e-mail 📬  
+- Sistema de seguidores 👥  
+- Aplicativo mobile com Flutter 📱  
+
+---
+
+## ❓ FAQ
+
+1. **Preciso me cadastrar para ver receitas?**  
+   Não. Qualquer visitante pode navegar, mas para interagir é necessário ter uma conta.
+
+2. **Posso publicar receitas com vídeo?**  
+   Em breve! Essa funcionalidade está no nosso roadmap.
+
+3. **O QuickBites é gratuito?**  
+   Sim. Todos os recursos atuais são gratuitos.
+
+---
+
+## 🤝 Como Contribuir
+
+Quer colaborar com o projeto? É simples:
+
+```bash
+# Faça um fork
+git clone https://github.com/seuusuario/quickbites.git
+
+# Crie uma nova branch
+git checkout -b minha-feature
+
+# Faça suas alterações
+git commit -m "feat: nova funcionalidade"
+
+# Envie para o repositório remoto
+git push origin minha-feature
+
+# Abra um Pull Request 🚀
