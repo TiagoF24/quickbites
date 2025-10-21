@@ -118,6 +118,7 @@ php artisan migrate
 
 # Inicie o servidor local
 php artisan serve
+```
 
 
 ## 🎮 Como Usar
